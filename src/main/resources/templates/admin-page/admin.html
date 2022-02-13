@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<head th:fragment="html_header-admin">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>Admin OrFarm </title>
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/img/favicon.ico}" />
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" .href="./image/578b1438ff0a7fc4704aa5ade7625e89.jpeg" type="image/png">
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link th:href="@{/assets/css/loader.css}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'"rel='stylesheet' type='text/css'>
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/css/plugins.css}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <link rel="stylesheet" type="text/css" th:href="@{/plugins/table/datatable/datatables.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/ecommerce/order.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/scss/style.css}">
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link th:href="@{/plugins/maps/vector/jvector/jquery-jvectormap-2.0.3.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/plugins/charts/chartist/chartist.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/default-dashboard/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/css/ecommerce-dashboard/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/css/ecommerce/addedit_product.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/css/ecommerce-dashboard/timeline.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../static/assets/scss/style.css">
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+</head>
+
+<body>
+    <div id="eq-loader">
+        <div class="eq-loader-div">
+            <div class="eq-loading dual-loader mx-auto mb-5"></div>
+        </div>
+    </div>
+
+    <!--  BEGIN NAVBAR  -->
+    <header class="desktop-nav header navbar fixed-top" th:fragment="my-header-admin">
+        <div class="nav-logo mr-sm-5 ml-sm-4">
+            <a href="javascript:void(0);" class="nav-link sidebarCollapse d-inline-block mr-sm-5"
+                data-placement="bottom">
+                <i class="flaticon-menu-line-3"></i>
+            </a>
+            <a th:href="@{/admin}" class=""> <img width="190px" th:src="@{/image/coollogo_com-7162464-removebg-preview.png}"
+                    class="img-fluid" alt="logo"></a>
+        </div>
+        <ul class="navbar-nav flex-row mr-auto">
+            <li class="nav-item ml-4 d-lg-none d-sm-block d-none">
+                <form class="form-inline search-full form-inline search animated-search" role="search">
+                    <i class="flaticon-search-1 d-lg-none d-block"></i>
+                    <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
+                </form>
+            </li>
+            <li class="nav-item d-lg-block d-none">
+                <form class="form-inline form-inline search animated-search" role="search">
+                    <i class="flaticon-search-1 d-lg-none d-block"></i>
+                    <input type="text" class="form-control search-form-control" placeholder="Tìm kiếm tại đây...">
+                </form>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav flex-row ml-lg-auto">
+
+            <li
+                class="nav-item dropdown language-dropdown ml-4 mr-4 pr-3 pl-3 align-self-center d-lg-inline-block d-none">
+                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="flagDropdown" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span class="">VN</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown user-profile-dropdown pl-4 pr-lg-0 pr-2 ml-lg-2 mr-lg-4  align-self-center">
+                <a href="javascript:void(0);" class="nav-link dropdown-toggle user">
+                    <div class="user-profile d-lg-block d-none">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6p1uHt5NGPGppq1t48xlKt18PfNiIX5zCYQ&usqp=CAU"
+                            alt="admin-profile" class="img-fluid">
+                    </div>
+                    <i class="flaticon-user-7 d-lg-none d-block"></i>
+                </a>
+            </li>
+        </ul>
+    </header>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN MAIN CONTAINER  -->
+
+    <div class="main-container" id="container">
+        <div class="overlay"></div>
+        <div class="ps-overlay"></div>
+        <div class="search-overlay"></div>
+
+        <!--  BEGIN MODERN  -->
+        <div class="modernSidebar-nav header header navbar" th:fragment="modern-admin">
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <div class="">
+                    <nav id="modernSidebar">
+                        <ul class="menu-categories pl-0 m-0" id="topAccordion">
+                            <li class="menu">
+                                <a th:href="@{/admin}">
+                                    <div class="">
+                                        <i class="flaticon-computer-6"></i>
+                                        <span>Thống kê</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="menu">
+                                <a th:href="@{/admin/order}" class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-cart-1"></i>
+                                        <span>Đơn hàng</span>
+                                    </div>
+                                </a>
+
+                            </li>
+
+                            <li class="menu">
+                                <a th:href="@{/admin/category}" class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-home-line"></i>
+                                        <span>Danh mục</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="menu">
+                                <a th:href="@{/admin/product}" class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-home-line"></i>
+                                        <span>Sản phẩm</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="menu">
+                                <a th:href="@{/admin/hub}" class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-home-line"></i>
+                                        <span>Kho Hàng</span>
+                                    </div>
+                                </a>
+
+                            </li>
+
+
+                            <li class="menu">
+                                <a href="#uiAccount" data-toggle="collapse" aria-expanded="false"
+                                   class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-user-7"></i>
+                                        <span>Tài khoản</span>
+                                    </div>
+                                </a>
+
+                                <div class="submenu list-unstyled collapse eq-animated eq-fadeInUp" id="uiAccount"
+                                     data-parent="#topAccordion">
+                                    <div class="submenu-scroll">
+                                        <ul class="list-unstyled mt-4">
+                                            <li>
+                                                <ul class="list-unstyled sub-submenu collapse show eq-animated eq-fadeInUp"
+                                                    id="ui-features">
+                                                    <li>
+                                                        <a th:href="@{/admin/userManager}">Khách hàng</a>
+                                                    </li>
+                                                    <li>
+                                                        <a th:href="@{/admin/staffManager}">Nhân viên</a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+            <div sec:authorize="hasAuthority('STAFF')">
+                <div class="">
+                    <nav id="modernSidebar">
+                        <ul class="menu-categories pl-0 m-0" id="topAccordion">
+                            <li class="menu">
+                                <a th:href="@{/admin}">
+                                    <div class="">
+                                        <i class="flaticon-computer-6"></i>
+                                        <span>Thống kê</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="menu">
+                                <a th:href="@{/admin/order}" class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-cart-1"></i>
+                                        <span>Đơn hàng</span>
+                                    </div>
+                                </a>
+
+                            </li>
+
+                            <li class="menu">
+                                <a th:href="@{/admin/hub}" class="dropdown-toggle collapsed">
+                                    <div class="">
+                                        <i class="flaticon-home-line"></i>
+                                        <span>Kho Hàng</span>
+                                    </div>
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--  END MODERN  -->
+
+        <!--  BEGIN CONTENT PART  -->
+        <div id="content" class="main-content">
+            <div class="container">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h3>Thống kê</h3>
+                        <form action="" method="post">
+                            <ul class=" list-unstyled cd-bread mt-20">
+                                <li>
+                                    <div class="check-time">
+                                        <div style="display: flex">
+                                            <span style="margin-top: 10px;">Từ ngày</span><input name="from_date"
+                                                                                                 class="form-control"
+                                                                                                 placeholder="Từ ngày"
+                                                                                                 type="date"
+                                                                                                 value="">
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span style="margin-top: 10px;">Đến ngày</span><input name="to_date"
+                                                                                                  class="form-control to_date_ed"
+                                                                                                  placeholder="Đế ngày"
+                                                                                                  type="date"
+                                                                                                  value="">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <button class="btn btn-info form-control"
+                                            style="margin-bottom: 10px" type="submit">Tìm Kiếm
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row layout-spacing ">
+
+                    <div class="col-xl-3 mb-xl-0 col-lg-6 mb-4 col-md-6 col-sm-6">
+                        <div class="widget-content-area  data-widgets br-4" style="background-color: #6ead14;">
+                            <div class="widget  t-sales-widget1">
+                                <div class="media">
+                                    <div class="icon ml-2">
+                                        <i class="flaticon-line-chart"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <p class="widget-text mb-0">Vốn</p>
+                                        <p class="widget-numeric-value" th:utext="${format.formatPrice(getCostOfProduct)}"></p>
+                                    </div>
+                                </div>
+                                <p class="widget-total-stats mt-2"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 mb-xl-0 col-lg-6 mb-4 col-md-6 col-sm-6">
+                        <div class="widget-content-area  data-widgets br-4" style="background-color: #FFA500;">
+                            <div class="widget  t-order-widget">
+                                <div class="media">
+                                    <div class="icon ml-2">
+                                        <i class="flaticon-cart-bag"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <p class="widget-text mb-0">Đơn hàng</p>
+                                        <p class="widget-numeric-value" th:utext="${countOrder}"></p>
+                                    </div>
+                                </div>
+                                <p class="widget-total-stats mt-2"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-sm-0 mb-4">
+                        <div class="widget-content-area  data-widgets br-4" style="background-color: #e30734;">
+                            <div class="widget  t-customer-widget">
+                                <div class="media">
+                                    <div class="icon ml-2">
+                                        <i class="flaticon-user-11"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <p class="widget-text mb-0">Khách hàng</p>
+                                        <p class="widget-numeric-value" th:utext="${countUser}"></p>
+                                    </div>
+                                </div>
+                                <p class="widget-total-stats mt-2"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+
+                        <div class="widget-content-area  data-widgets br-4" style="background-color: #0dcaef;">
+                            <div class="widget  t-income-widget">
+                                <div class="media">
+                                    <div class="icon ml-2">
+                                        <i class="flaticon-money"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <p class="widget-text mb-0">Doanh thu</p>
+                                        <p class="widget-numeric-value" th:utext="${format.formatPrice(getRevenue)}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xl-5 col-lg-12 col-md-12 col-12 layout-spacing" >
+
+                        <div class="widget-content-area br-4 layout-spacing" style="height: 490px;display: flex; align-items: center;
+    justify-content: center;">
+                            <div class="widget  t-sales-widget w-100">
+                                <i class="flaticon-close-fill cancel-row"></i>
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-12">
+                                        <div class="trading-time mt-4">
+
+                                            <div class="d-flex date-content justify-content-center">
+                                                <div class="text-center">
+                                                    <div id="week" class="d-inline"></div>
+                                                    <div id="day" class="d-inline"> </div>
+                                                    <div id="month" class="d-inline"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex timer-content justify-content-center mt-2">
+                                                <div id="hour" class=""></div>
+                                                <div id="minut" class=""></div>
+                                                <div id="sec" class=""></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 col-sm-5 col-12 text-center text-center">
+                                        <i class="flaticon-wall-clock icon1  mt-3" style="font-size: 94px;
+                                        vertical-align: middle;
+                                        color: #d3d3d3;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-7 col-lg-12 col-sm-12 col-12 layout-spacing">
+                        <div class="statbox widget box">
+                            <div class="widget-header ">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <h4>Doanh thu và lợi nhuận</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content widget-content-area  monthly-profit-chart">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-12 mt-3">
+                                                <div class="s-r mx-auto"
+                                                     style="height: 300px; width: 100%; max-width: 275px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-12 mt-2 mb-2">
+                                        <div class="row mt-4">
+                                            <div class="col-lg-6 col-md-6 col-6 px-xl-0 text-right">
+                                                <div class="d-flex justify-content-end">
+                                                    <div class="d-m-revenue data-marker align-self-center"></div>
+                                                    <span class="page-view mr-sm-3">Doanh thu</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-6 px-xl-0 text-left">
+                                                <div class="d-flex justify-content-start">
+                                                    <div class="d-m-profit data-marker align-self-center"></div>
+                                                    <span class="page-view">Lợi Nhuận</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+                        <div class="statbox widget box">
+                            <div class="widget-header ">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <h4>Sản phẩm mới</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="widget-content-area ">
+
+                                <div class="table-responsive new-products">
+                                    <table class="table" id="ecommerce-product-list">
+                                        <thead>
+                                            <tr>
+                                                <th class="form-check-column text-center">
+                                                    <label for="checkAll"
+                                                        class="new-control new-checkbox new-checkbox-rounded checkbox-primary pb-2">
+                                                        <input type="checkbox" id="checkAll" class="new-control-input">
+                                                        <span class="new-control-indicator mt-2"></span><span
+                                                            class="invisible">s</span>
+                                                    </label>
+                                                </th>
+                                                <th>Sản phẩm</th>
+                                                <th>Kiểu loại</th>
+                                                <th>SKU</th>
+                                                <th class="text-center">Số lượng</th>
+                                                <th>Hình ảnh</th>
+                                                <th class="text-center">Giá bán</th>
+                                                <th class="text-center">Trạng thái</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr th:each="pro, state : ${dsProduct}">
+                                                <td class="form-check-column text-center">
+                                                    <label
+                                                        class="new-control new-checkbox new-checkbox-rounded checkbox-primary pb-2">
+                                                        <input type="checkbox" class="new-control-input chkbox">
+                                                        <span class="new-control-indicator mt-2"></span><span
+                                                            class="invisible">s</span>
+                                                    </label>
+                                                </td>
+                                                <td th:utext="${pro.name}"></td>
+                                                <td><span class="badge badge-info badge-pill" th:utext="${pro.category.name}"></span></td>
+                                                <td th:utext="${pro.id}"></td>
+                                                <td class="text-center" th:utext="${pro.quantityProd}">1</td>
+                                                <td>
+                                                    <img th:src="@{'/image/ImageOrFarm/'+${pro.image}}" class="img-fluid" alt="img-1"
+                                                        style="border-color: #3862f5;">
+                                                </td>
+                                                <td class="text-center" th:utext="${format.formatPrice(pro.salePrice)}"></td>
+                                                <td class="text-center">
+                                                    <div class="toolbar">
+                                                        <div class="toolbar-toggle">...</div>
+                                                        <ul
+                                                            class="toolbar-dropdown animated fadeInUp table-controls list-inline">
+                                                            <li class="list-inline-item"><a href="javascript:void(0);"
+                                                                    class="bs-tooltip" data-original-title="View"><i
+                                                                        class="flaticon-view-3"></i></a>
+                                                            </li>
+                                                            <li class="list-inline-item"><a href="javascript:void(0);"
+                                                                    class="bs-tooltip" data-original-title="Edit"><i
+                                                                        class="flaticon-edit-5"></i></a>
+                                                            </li>
+                                                            <li class="list-inline-item"><a href="javascript:void(0);"
+                                                                    class="bs-tooltip" data-original-title="Remove"><i
+                                                                        class="flaticon-delete-6"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+                        <div class="statbox widget box box-shadow latest-invoice ">
+                            <div class="widget-header ">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <h4>Hóa đơn gần nhất</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content-area ">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="form-check-column text-center">
+                                                    <label for="invoiceAll"
+                                                        class="new-control new-checkbox checkbox-primary pb-2">
+                                                        <input type="checkbox" id="invoiceAll"
+                                                            class="new-control-input">
+                                                        <span class="new-control-indicator mt-2"></span><span
+                                                            class="invisible">s</span>
+                                                    </label>
+                                                </th>
+                                                <th>Sản phẩm</th>
+                                                <th>Mã hóa đơn</th>
+                                                <th>Ngày</th>
+                                                <th class="text-center">Số lượng</th>
+                                                <th class="text-center">Trạng thái</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody th:each="top, state : ${topOder}">
+                                            <tr>
+                                                <td class="form-check-column text-center">
+                                                    <label class="new-control new-checkbox checkbox-primary pb-2">
+                                                        <input type="checkbox" class="new-control-input invoicechk">
+                                                        <span class="new-control-indicator mt-2"></span><span
+                                                            class="invisible">s</span>
+                                                    </label>
+                                                </td>
+                                                <td th:utext="${top.name}"></td>
+                                                <td th:utext="${top.order_id}"></td>
+                                                <td th:utext="${top.date}"></td>
+                                                <td class="align-center" th:utext="${top.quantity}">15</td>
+                                                <td class="text-center">
+                                                    <span class="badge badge-pills outline-badge-secondary" th:utext="${top.status}"></span>
+                                                </td>
+                                                <td>
+                                                    <i class="flaticon-view-1 bs-tooltip" data-placement="top"
+                                                        data-original-title="View"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row" style="display: none;">
+                    <div class="col-xl-5 col-lg-12 col-md-12 col-12 layout-spacing">
+                        <div class="widget-content-area page-views p-0  br-4">
+                            <ul class="nav nav-pills py-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                        role="tab" aria-controls="pills-home" aria-selected="true">Daily</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                        role="tab" aria-controls="pills-profile" aria-selected="false">Weekly</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
+                                        role="tab" aria-controls="pills-contact" aria-selected="false">Monthly</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                    aria-labelledby="pills-home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 text-center">
+                                            <div class="daily">
+                                                <p class="d-count mb-0">5,067</p>
+                                                <p>Total Page Views</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div id="daily"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                    aria-labelledby="pills-profile-tab">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 text-center">
+                                            <div class="weekly">
+                                                <p class="w-count mb-0">25,067</p>
+                                                <p>Total Page Views</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div id="weekly"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                                    aria-labelledby="pills-contact-tab">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 text-center">
+                                            <div class="month">
+                                                <p class="m-count mb-0">276,097</p>
+                                                <p>Total Page Views</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div id="month"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-7 col-lg-12 col-md-12 col-12 layout-spacing">
+                        <div class="row">
+
+                            <div class="col-sm-4 col-12 mb-sm-0 mb-4">
+                                <div class="widget-content-area social-likes text-center p-0  br-4">
+                                    <div class="card facebook">
+                                        <div class="icon mb-4">
+                                            <i class="flaticon-facebook-logo"></i>
+                                        </div>
+                                        <div class="card-content">
+                                            <h5>Facebook</h5>
+                                            <p>13K Followers</p>
+                                        </div>
+                                        <div class="card-btn-section">
+                                            <p>View Profile</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 col-12 mb-sm-0 mb-4">
+                                <div class="widget-content-area social-likes text-center p-0  br-4">
+                                    <div class="card dribbble">
+                                        <div class="icon mb-4">
+                                            <i class="flaticon-dribbble-bold"></i>
+                                        </div>
+                                        <div class="card-content">
+                                            <h5>Dribbble</h5>
+                                            <p>4K Followers</p>
+                                        </div>
+                                        <div class="card-btn-section">
+                                            <p>Check Work</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 col-12 mb-sm-0 mb-4">
+                                <div class="widget-content-area social-likes text-center p-0  br-4">
+                                    <div class="card twitter">
+                                        <div class="icon mb-4">
+                                            <i class="flaticon-twitter-logo"></i>
+                                        </div>
+                                        <div class="card-content">
+                                            <h5>Twitter</h5>
+                                            <p>7.2K Followers</p>
+                                        </div>
+                                        <div class="card-btn-section">
+                                            <p>Read Tweets</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--  END CONTENT PART  -->
+
+    </div>
+    <!-- END MAIN CONTAINER -->
+    
+    <!--  BEGIN FOOTER  -->
+    <footer class="footer-section theme-footer" th:fragment="admin-footer">
+
+        <div class="footer-section-1  sidebar-theme">
+
+        </div>
+
+        <div class="footer-section-2 container-fluid">
+            <div class="row">
+                <div id="toggle-grid" class="col-xl-7 col-md-6 col-sm-6 col-12 text-sm-left text-center">
+                    <ul class="list-inline links ml-sm-5">
+                        <li class="list-inline-item">
+                            <a th:href="@{/index}">OrFarm Store</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-5 col-md-6 col-sm-6 col-12">
+                    <ul
+                        class="list-inline mb-0 d-flex justify-content-sm-end justify-content-center mr-sm-3 ml-sm-0 mx-3">
+                        <li class="list-inline-item  mr-3">
+                            <p class="bottom-footer">&#xA9; 2022 <a th:href="@{/index}">OrFarm Store</a></p>
+                        </li>
+                        <li class="list-inline-item align-self-center">
+                            <div class="scrollTop"><i class="flaticon-up-arrow-fill-1"></i></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--  END FOOTER  -->
+
+    <!--  BEGIN PROFILE SIDEBAR  -->
+    <aside class="profile-sidebar text-center" th:fragment="admin-profile">
+        <div class="profile-content profile-content-scroll">
+            <div class="usr-profile">
+                <img th:src="@{/assets/img/90x90.jpg}" alt="admin-profile" class="img-fluid" />
+            </div>
+            <p class="user-name mt-4 mb-4"><span th:text="${#authentication.getPrincipal().getFullname()}"></span></p>
+
+
+            <div class="user-links text-left">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#"><i class="flaticon-mail-22"></i> Email: <span th:text="${#authentication.getPrincipal().getUsername()}"></span></a>
+
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/personal-infor}"><i class="far fa-user"></i> Trang Cá Nhân</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/logout}"><i class="flaticon-power-off"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!--  BEGIN PROFILE SIDEBAR  -->
+</body>
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script th:src="@{/assets/js/libs/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/assets/js/loader.js}"></script>
+    <script th:src="@{/assets/js/popper.min.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+    <script th:src="@{/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+    <script th:src="@{/plugins/blockui/jquery.blockUI.min.js}"></script>
+    <script th:src="@{/assets/js/app.js}"></script>
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });
+    </script>
+    <script th:src="@{/assets/js/custom.js}"></script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <script th:src="@{/plugins/charts/chartist/chartist.js}"></script>
+    <script th:src="@{/plugins/maps/vector/jvector/jquery-jvectormap-2.0.3.min.js}"></script>
+    <script th:src="@{/plugins/maps/vector/jvector/worldmap_script/jquery-jvectormap-world-mill-en.js}"></script>
+    <script th:src="@{/plugins/calendar/pignose/moment.latest.min.js}"></script>
+    <script th:src="@{/plugins/calendar/pignose/pignose.calendar.js}"></script>
+    <script th:src="@{/plugins/progressbar/progressbar.min.js}"></script>
+    <script th:src="@{/assets/js/default-dashboard/default-custom.js}"></script>
+    <script th:src="@{/assets/js/ui-kit/timeline/horizontal-main.js}"></script>
+    <script th:src="@{/plugins/progressbar/progressbar.min.js}"></script>
+    <script th:src="@{/plugins/charts/amcharts/amcharts.js}"></script>
+    <script th:src="@{/plugins/maps/vector/ammaps/ammap_amcharts_extension.js}"></script>
+    <script th:src="@{/plugins/maps/vector/ammaps/worldLow.js}"></script>
+    <script th:src="@{/plugins/charts/amcharts/radar.js}"></script>
+    <script th:src="@{/plugins/charts/amcharts/pie.js}"></script>
+    <script th:src="@{/plugins/charts/sparklines/jquery.sparkline.min.js}"></script>
+    <script th:src="@{/plugins/charts/amcharts/serial.js}"></script>
+    <script th:src="@{/plugins/charts/amcharts/light.js}"></script>
+    <script th:src="@{/plugins/table/datatable/datatables.js}"></script>
+    <script th:src="@{/assets/js/ecommerce-dashboard/ecommerce-custom.js}"></script>
+    <script th:src="@{/assets/js/ecommerce/order.js}"></script>
+
+    <script !src="">
+        var d = new Date();
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        $("#month").html(monthNames[d.getMonth()] + '' );
+        $("#day").html(d.getDate() + '&nbsp;');
+        var weekNames = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        $("#week").html(weekNames[d.getDay()] + ',');
+        function timer() {
+            var d = new Date();
+            var h = d.getHours(),
+                mm = d.getMinutes(),
+                ss = d.getSeconds(),
+                hh = h;
+            if (hh >= 12) {
+                hh = h - 12;
+                dd= 'PM';
+            }
+            if (hh === 0) {
+                hh = 12;
+            }
+            hh = hh<10?'0'+hh:hh;
+            mm = mm<10?'0'+mm:mm;
+            ss = ss<10?'0'+ss:ss;
+
+            $("#hour").html(hh + ':');
+            $("#minut").html(mm + ':');
+            $("#sec").html(ss);
+
+        }
+        setInterval(function(){ timer();}, 1000);
+    </script>
+<script>
+    $('#ecommerce-product-list').DataTable({
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "language": {
+            "paginate": { "previous": "<i class='flaticon-arrow-left-1'></i>", "next": "<i class='flaticon-arrow-right'></i>" },
+            "info": "Hiện thị _PAGE_ trong _PAGES_"
+        },
+        drawCallback: function (settings) { $('[data-toggle="tooltip"]').tooltip(); },
+        "bDestroy": true
+    });
+</script>
+
+</html>

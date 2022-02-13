@@ -1,0 +1,276 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin-page/admin :: html_header-admin }">
+
+<body>
+<div id="eq-loader">
+    <div class="eq-loader-div">
+        <div class="eq-loading dual-loader mx-auto mb-5"></div>
+    </div>
+</div>
+
+<!--  BEGIN NAVBAR  -->
+<header th:replace="~{admin-page/admin  :: my-header-admin}"></header>
+<!--  END NAVBAR  -->
+<!--  BEGIN PROFILE SIDEBAR  -->
+
+
+<div class="main-container" id="container">
+    <div class="overlay"></div>
+    <div class="ps-overlay"></div>
+    <div class="search-overlay"></div>
+
+    <!--  BEGIN MODERN  -->
+    <div th:replace="~{admin-page/admin  :: modern-admin}"></div>
+    <!--  END MODERN  -->
+
+    <!--  BEGIN CONTENT PART  -->
+    <div id="content" class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-title">
+                    <h3>Đơn Hàng</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="order-top-section">
+
+                        <div class="card-section mx-md-auto">
+                            <div class="row">
+                                <div class="col-xl col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                                    <div class="o-cards">
+
+                                        <a th:href="@{/admin/order}"><h5 class="txt-o-placed">Tất cả đơn hàng</h5></a>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-4 mt-4">
+                                                <div class="">
+                                                    <i class="flaticon-cart-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-8 mt-4">
+                                                <h4 th:utext="${countOrder}"></h4>
+                                                <h6>Đơn hàng</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                                    <div class="o-cards">
+                                            <h5 class="txt-o-shipped">Đang mua hàng</h5></a>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-4 mt-4">
+                                                <div class="">
+                                                    <i class="flaticon-cart-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-8 mt-4">
+                                                <h4 th:utext="${countCart}"></h4>
+                                                <h6>User đang mua hàng</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                                    <div class="o-cards">
+<!--                                        <a th:href="@{'/admin/order/fill-by-status/'+APPROVED}">-->
+                                            <h5 class="txt-o-arrival">Đang xử lý</h5></a>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-4 mt-4">
+                                                <div class="">
+                                                    <i class="flaticon-cart-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-8 mt-4">
+                                                <h4 th:utext="${countApproved}">768</h4>
+                                                <h6>Đơn chờ xác nhận</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-xl col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                                    <div class="o-cards">
+<!--                                        <a href="">-->
+                                            <h5 class="txt-o-arrival">Đang vận chuyển</h5></a>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-4 mt-4">
+                                                <div class="">
+                                                    <i class="flaticon-cart-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-8 mt-4">
+                                                <h4 th:utext="${countProcessing}">768</h4>
+                                                <h6>Đang giao</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                                    <div class="o-cards">
+<!--                                        <a href="">-->
+                                            <h5 class="txt-o-arrival">Hoàn thành</h5></a>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-4 mt-4">
+                                                <div class="">
+                                                    <i class="flaticon-cart-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-8 mt-4">
+                                                <h4 th:utext="${countDelivered}">768</h4>
+                                                <h6>Giao thành công</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                                    <div class="o-cards">
+<!--                                        <a href="">-->
+                                            <h5 class="txt-o-arrival">Đã hủy</h5></a>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-4 mt-4">
+                                                <div class="">
+                                                    <i class="flaticon-cart-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-8 mt-4">
+                                                <h4 th:utext="${countCancel}">768</h4>
+                                                <h6>Đã Hủy</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-ordered">
+                        <form th:action="@{/admin/resultFilter}" method="post" th:object="${dateFill}">
+                            <ul class=" list-unstyled cd-bread mt-20">
+                                    <li>
+                                        <div class="check-time">
+                                            <div style="display: flex">
+                                                <span style="margin-top: 10px;">Từ ngày</span><input name="from_date"
+                                                                                                     class="form-control"
+                                                                                                     placeholder="Từ ngày"
+                                                                                                     type="date"
+                                                                                                     value="" th:field="*{startFill}">
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span style="margin-top: 10px;">Đến ngày</span><input name="to_date"
+                                                                                                      class="form-control to_date_ed"
+                                                                                                      placeholder="Đế ngày"
+                                                                                                      type="date"
+                                                                                                      value="" th:field="*{endFill}">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-info form-control"
+                                                style="margin-bottom: 10px" type="submit">Tìm Kiếm
+                                        </button>
+                                    </li>
+                            </ul>
+                        </form>
+                        <!--                            <form th:action= method="get">-->
+                        <!--                                <button class="btn btn-danger form-control" style="margin-bottom: 10px">Xuất-->
+                        <!--                                    excel</button>-->
+                        <!--                            </form>-->
+                        <a th:href="@{/admin/export}"> Xuất excel</a>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="widget-header">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <h4>Danh sách đơn hàng</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content widget-content-area">
+                            <div class="table-responsive mb-4">
+                                <table id="ecommerce-order-list" class="table table-hover table-bordered">
+                                    <thead>
+                                    <tr class="text-center">
+                                        <th>ID</th>
+                                        <th>Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số lượng</th>
+
+                                        <th>Tổng tiền</th>
+
+                                        <th class="align-center">Trạng thái</th>
+                                        <th class="align-center">Chi tiết</th>
+                                    </tr>
+                                    <!-- ID, tên người nhận, địa chỉ, số điện thoại, ngày tạo, tên sản phẩm, số lượng sản phẩm, tổng hóa đơn. -->
+                                    </thead>
+                                    <tbody class="text-center" >
+                                    <th:block th:each="od, state:${orderAdmin}">
+                                    <tr>
+                                        <td th:utext="${od.order_id}">1</td>
+                                        <td th:utext="${od.name}">Nguyenvana</td>
+                                        <td th:utext="${od.phoneNumber}">0125847658</td>
+                                        <td th:utext="${od.address}">Hà Nội</td>
+
+                                        <td th:utext="${od.totalProduct}">3</td>
+
+                                        <td th:utext="${format.formatPrice(od.totalPrice)}">200000đ</td>
+
+                                        <td class="align-center">
+                                            <span class="badge badge-success" th:utext="${od.status}">Thành công</span>
+                                        </td>
+                                        <td class="align-center">
+                                            <form th:action="@{'/admin/order/' + ${od.order_id}}" method="get">
+                                                <button type="submit" class="btn btn-default btn-sm">
+                                                    <i class="icon-search"></i> View
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    </th:block>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--  END CONTENT PART  -->
+</div>
+<!-- END MAIN CONTAINER -->
+</div>
+<!--  END MODERN  -->
+<!--  BEGIN FOOTER  -->
+<footer th:replace="~{admin-page/admin  :: admin-footer}"></footer>
+<!--  END FOOTER  -->
+
+<!--  BEGIN PROFILE SIDEBAR  -->
+<aside th:replace="~{admin-page/admin  :: admin-profile}"></aside>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<th:block th:insert="~{admin-page/admin  :: script}"></th:block>
+<script>
+    $('#ecommerce-order-list').DataTable({
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "language": {
+            "paginate": { "previous": "<i class='flaticon-arrow-left-1'></i>", "next": "<i class='flaticon-arrow-right'></i>" },
+            "info": "Hiện thị _PAGE_ trong _PAGES_"
+        },
+        drawCallback: function (settings) { $('[data-toggle="tooltip"]').tooltip(); },
+        "bDestroy": true
+    });
+</script>
+
+<!--  END CUSTOM SCRIPT FILES  -->
+</html>

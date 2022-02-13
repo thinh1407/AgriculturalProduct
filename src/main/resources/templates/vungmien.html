@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+
+<body>
+    <header th:replace="header :: my-header"></header>
+
+    <section class="breadcrum">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb container">
+              <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
+            </ol>
+          </nav>
+    </section>
+    <div class="orfarm-shop-grid-area pt-100 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <div class="orfarm-shop-sidebar">
+                        <div class="shop-price-filter">
+                            <h4 class="title">Lọc theo giá</h4>
+                            <div class="price-range">
+                               <input type="checkbox" name="" id="">
+                               <label for="">10.000đ - 30.000đ</label>
+                               <br>
+                               <input type="checkbox" name="" id="">
+                               <label for="">30.000đ - 50.000đ</label>
+                               <br>
+                               <input type="checkbox" name="" id="">
+                               <label for="">50.000đ - 100.000đ</label> 
+                               <br>
+                                <input type="checkbox" name="" id="">
+                               <label for="">100.000đ - 200.000đ</label>
+                               <br>
+                               <input type="checkbox" name="" id="">
+                               <label for="">> 200.000đ</label>
+                            </div>
+                        </div>
+                        <div class="shop-category-widget">
+                            <h4 class="title">Danh Mục Sản Phẩm</h4>
+                            <ul>
+                                <li ><a href="./raucusach.html" >Rau củ sạch</a></li>
+                                <li><a href="./hoaqua.html">Hoa quả</a></li>
+                                <li><a href="./dokho.html">Đồ khô</a></li>
+                                <li class="fruit"><a href="./vungmien.html">Đặc sản vùng miền</a></li>
+                                <li><a href="./tuoisong.html">Thực phẩm tươi sống</a></li>
+                                <li><a href="./thucphamkhac.html">Sản phẩm khác</a></li>
+                            </ul>
+                        </div>
+                        <div class="shop-best-product-widget">
+                            <h4 class="title">Best Seller</h4>
+                            <div class="shop-product">
+                                <div class="thumb">
+                                    <img src="./image/f32c6656fee62c7f9de30995f92fdfae.jpg" alt="">
+                                </div>
+                                <div class="content">
+                                    <a href="./productdetail.html">Bánh Xoài Nha Trang</a>
+                                    <span>40.000đ</span>
+                                </div>
+                            </div>
+                            <div class="shop-product">
+                                <div class="thumb">
+                                    <img src="./image/thit-trau-gac-bep-1.jpg" alt="">
+                                </div>
+                                <div class="content">
+                                    <a href="./productdetail.html">Trâu Gác Bếp Sa Pa</a>
+                                    <span>870.000đ</span>
+                                </div>
+                            </div>
+                            <div class="shop-product">
+                                <div class="thumb">
+                                    <img src="./image/photo-1626332105694-1626332106007437998543.jpeg" alt="">
+                                </div>
+                                <div class="content">
+                                    <a href="./productdetail.html">Lạp Xưởng</a>
+                                    <span>450.000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shop-tags-bar">
+                            <h4 class="title">Sản phẩm phổ biến</h4>
+                            <ul>
+                                <li><a href="#">Chuối</a></li>
+                                <li><a href="#">Thịt trâu</a></li>
+                                <li><a href="#">Táo</a></li>
+                                <li><a href="#">Gạo</a></li>
+                                <li><a href="#">Cà Phê</a></li>
+                                <li><a href="#">Hạt Điều</a></li>
+                                <li><a href="#">cải Bắp</a></li>
+                                <li><a href="#">Cải Gồng</a></li>
+                            </ul>
+                        </div>
+                        <div class="shop-sidebar">
+                            <a href="./shop.html" class="image-hover">
+                                <img src="./image/banner10-min.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="row">
+                        <div class="banner-collection pb-5 w-300">
+                            <img src="./image/niu-long-du-khach-voi-nhung-mon-an-duong-pho-ha-noi-dac-trung-mon-an-ngon-o-ha-noi.jpg"  height="262px" alt="">
+                        </div>
+                    </div>
+                    <div class="shop-grid-topbar d-flex justify-content-between align-items-center">
+                        <span>Hiện thị tổng số <span>12</span> sản phẩm.</span>
+                        <select id="product">
+                            <option value="volvo">Mới nhất</option>
+                            <option value="saab">Bán chạy nhất</option>
+                            <option value="vw">Đánh giá tốt</option>
+                            
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-1.jpg" alt="">
+                                    <div class="reborn">
+                                        <span>Sale</span>
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="1">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-2.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="2">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-3.jpg" alt="">
+                                    <div class="reborn">
+                                        <span>Hot</span>
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="3">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-1.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="4">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-4.jpg" alt="">
+                                    <div class="reborn">
+                                        <span>New</span>
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="5">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-6.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="6">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-7.jpg" alt="">
+                                    <div class="reborn">
+                                        <span>Hot</span>
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="7">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-8.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="8" >
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-9.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="9">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-10.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="10">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-11.jpg" alt="">
+                                    <div class="reborn">
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="11">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span>  </div> 
+                                        <div class="regular-price"><span>30.000 </span>  <sup>đ</sup></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-shop-box">
+                                <div class="thumb text-center">
+                                    <img src="./image/shop-grid-12.jpg" alt="">
+                                    <div class="reborn">
+                                        <span>Sale</span>
+                                    </div>
+                                    <div class="cart-list-icon">
+                                        <ul>
+                                            <li class="shopping-bag"><a href="#"><i class="fal fa-shopping-bag"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-eye"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                    </ul>
+                                    <input type="hidden" id="productId" value="12">
+                                    <a href="#">Cải Bắp</a>
+                                    <div class="pricing">
+                                        <div class="discount-price"><span>25.000 </span> </div> 
+                                        <div class="regular-price"><span>30.000 </span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="bisylms-pagination">
+                                <span class="current">1</span>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a class="next" href="#">next<i class="fal fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!--====== SHOPPING CART PART START ======-->
+
+    <div th:replace="index :: my-cart"></div>
+
+    <!--====== SHOPPING CART PART ENDS ======-->
+    <section class="pt-2 mb-3">
+        <div class="container">
+            <div class="ftlink-li footer-newsletter">
+                <div class="news-letter">
+                    <div class="title">
+
+                        <h2 class="ft-title">Cơ Hội Săn Mã Giảm Giá Cuối Cùng !!!</h2>
+
+
+                        <p class="pb-2">NHẬN NGAY GIẢM GIÁ 20% CHO LẦN MUA HÀNG ĐẦU TIÊN TẠI SHOP!!</p>
+
+                    </div>
+                    <div class="subscribe-content">
+                        <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form-coupon"><input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓">
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <div class="subscribe-block ">
+                                <input type="email" name="contact[email]" class="email form-control mail text-medium" id="E-mail" value="" placeholder="Enter Your Email Address" autocapitalize="off">
+                                <button type="submit" class="btn-style1" name="commit" id="Subscribe"><a href="./createAccount.html" style="text-decoration: none; color: #fff;">Đăng Ký</a></button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <th:block th:insert="~{header :: script}"></th:block>
+</html>

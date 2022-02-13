@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+<body>
+
+    <header th:replace="header :: my-header"></header>
+
+    <div class="banner-top pt-5">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style=" transform: scale(1.5);">
+                    <img class="d-block w-100" src="./image/b1.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="row">
+                            <div class="col-sm-4 text-title">
+                                <h2>Farmfood freshbox</h2>
+                                <h6>
+                                    Fresh & Healthy
+                                </h6>
+                                <a href="./raucusach.html">GHÉ SHOP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style=" transform: scale(1.2);">
+                    <img class="d-block w-100" src="./image/b2.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="row">
+                            <div class="col-sm-4 text-title-diff">
+                                <h2>Pure and Organic</h2>
+                                <h6>
+                                    Honey Flat 20% Off
+                                </h6>
+                                <a href="./raucusach.html">GHÉ SHOP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style=" transform: scale(1.2);">
+                    <img class="d-block w-100" src="./image/b3.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="row">
+                            <div class="col-sm-4 text-title-diff">
+                                <h2>Always Fresh Beans</h2>
+                                <h6>
+                                    Best collections
+                                </h6>
+                                <a href="./raucusach.html">GHÉ SHOP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style=" transform: scale(1.2);">
+                    <img class="d-block w-100" src="./image/b5.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="row">
+                            <div class="col-sm-4 text-title-diff">
+                                <h2>Heathiest Vegestables</h2>
+                                <h6>
+                                    Best collections
+                                </h6>
+                                <a href="./raucusach.html">GHÉ SHOP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-3  ">
+                    <div class="banner-block banner-hover">
+
+                        <img class=" lazyloaded" src="./image/banner2-min.jpg">
+
+                        <div class="banner-content text-left">
+
+
+                            <h4 style="color: #232323;">Vegetable Eggplant <br> 100% Fresh food</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-3  ">
+                    <div class="banner-block banner-hover">
+                        <a href="#">
+                            <img class=" lazyloaded" src="./image/banner1.jpg">
+                        </a>
+                        <div class="banner-content text-left">
+
+                            <h4 style="color: #232323;">Fresh fruit vegetable <br> on our product</h4>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-3 category">
+        <div class="container">
+            <div class="title text-center   ">
+                <h2>Danh mục sản phẩm</h2>
+            </div>
+
+            <div class="row">
+                <div class="cate-slider">
+<!--                    comment 6 casi div dưới nếu muốn load ảnh product từ db ra để slide-->
+<!--                    <div class="img-cate" th:each="product : ${products}"><img th:src="@{'/image/ImageOrFarm/' + ${product.getImage()}}" alt=""></div>-->
+                    <div class="img-cate"><img src="./image/bơ1.jpg" alt=""></div>
+                    <div class="img-cate"><img src="./image/hatj rẻ.jpg" alt=""></div>
+                    <div class="img-cate"><img src="./image/bơ.jpg" alt=""></div>
+                    <div class="img-cate"><img src="./image/cà chua.jpg" alt=""></div>
+                    <div class="img-cate"><img src="./image/cải bắp.jpg" alt=""></div>
+                    <div class="img-cate"><img src="./image/cat3.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5 product">
+        <div class="container">
+            <div class="title text-center pb-10  ">
+                <h2>Sản phẩm nổi bật</h2>
+            </div>
+
+            <div class="row">
+                <div class="product-slider" >
+                    <div class="col-md-2" th:each="product : ${listHotProduct}">
+                        <a th:href="@{'/product/' + ${product.getId()}}">
+                            <div class="card">
+                                <img class="card-img-top" th:src="@{'/image/ImageOrFarm/' + ${product.getImage()}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${product.getName()}"></h5>
+                                    <h6 th:text="${product.getBriefDesc()}"></h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner-bot mt-5">
+        <div id="clockdiv">
+            <h2>CƠ HỘI SĂN MÃ GIẢM GIÁ LÊN ĐẾN 50%</h2>
+            <div>
+                <span class="days"></span>
+                <div class="smalltext">Days</div>
+            </div>
+            <div>
+                <span class="hours"></span>
+                <div class="smalltext">Hours</div>
+            </div>
+            <div>
+                <span class="minutes"></span>
+                <div class="smalltext">Minutes</div>
+            </div>
+            <div>
+                <span class="seconds"></span>
+                <div class="smalltext">Seconds</div>
+            </div>
+
+        </div>
+        <button type="button" class="btn btn-warning" style="margin: 0 auto; display: flex;
+          "><a th:href="@{'/category/1'}" style="text-decoration: none; color: #232323;">MUA NGAY</a></button>
+    </section>
+    <div class="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage pt-3 pb-3">
+                        <h2>Khuyến mãi trong tuần</h2>
+                        <span>Cơ hội để gia đình bạn sở hữu những sản phẩm ưu đãi !!! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-3" th:each="saleProduct : ${listSaleProduct}">
+                    <div class="pro-loop">
+                        <div class="product-block product-resize">
+                            <div class="product-img">
+                                <div class="product-sale">
+                                    <span th:text="'-' + *{saleProduct.getPercentDiscount()} + '%'" ></span>
+                                </div>
+                                <a th:href="@{'/product/' + *{saleProduct.getId()}}">
+                                    <div class="fader">
+                                        <img class=" card-img-top" th:src="@{'/image/ImageOrFarm/' + ${saleProduct.getImage()}}" alt="">
+                                        <img class="w-100 card-img-top" th:src="@{'/image/ImageOrFarm/' + ${saleProduct.getImage()}}" alt="" style="display: none;">
+                                    </div>
+                                </a>
+                                <div class="box-pro-detail">
+                                    <h3 class="pro-name">
+                                        <a th:href="@{'/product/' + *{saleProduct.getId()}}"></a>
+                                        <a th:href="@{'/product/' + *{saleProduct.getId()}}" th:text="*{saleProduct.getName()}"></a>
+                                    </h3>
+                                    <div class="box-pro-prices">
+                                        <th:block th:if="${saleProduct.percentDiscount!=0}">
+                                            <p class="pro-price highlight">
+                                                <th:block th:with="discountPrice=${(saleProduct.salePrice * (100 - saleProduct.percentDiscount))/100}">
+                                                    <span th:text="${format.formatPrice(discountPrice)}"></span><sup>đ</sup>
+                                                </th:block>
+                                                <span class="pro-price-del">
+                                                    <del class="compare-price" th:text="${format.formatPrice(saleProduct.salePrice)}+'đ'"></del>
+                                                </span>
+                                            </p>
+                                        </th:block>
+                                        <th:block th:unless="${saleProduct.percentDiscount!=0}">
+                                            <p class="pro-price highlight">
+                                                <span th:text="${format.formatPrice(saleProduct.salePrice)}"></span><sup>đ</sup>
+                                            </p>
+                                        </th:block>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="pt-2 mb-3">
+        <div class="container">
+            <div class="ftlink-li footer-newsletter">
+                <div class="news-letter">
+                    <div class="title">
+
+                        <h2 class="ft-title">Cơ Hội Săn Mã Giảm Giá Cuối Cùng !!!</h2>
+
+
+                        <p class="pb-2">NHẬN NGAY GIẢM GIÁ 20% CHO LẦN MUA HÀNG ĐẦU TIÊN TẠI SHOP!!</p>
+
+                    </div>
+                    <div class="subscribe-content">
+                        <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form-coupon"><input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓">
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <div class="subscribe-block ">
+                                <input type="email" name="contact[email]" class="email form-control mail text-medium" id="E-mail" value="" placeholder="Enter Your Email Address" autocapitalize="off">
+                                <button type="submit" class="btn-style1" name="commit" id="Subscribe"><a href="./createAccount.html" style="text-decoration: none; color: #fff;">Đăng Ký</a></button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====== SHOPPING CART PART START ======-->
+
+    <div class="amm-shopping-cart-wrapper" th:fragment="my-cart">
+        <div class="amm-shopping-cart-canvas" id="amm-shopping-cart-canvas">
+            <div class="amm-shopping_cart">
+                <div class="amm-shopping_cart-top-bar d-flex justify-content-between">
+                    <h6>Giỏ hàng</h6>
+                    <button class="amm-shopping-cart-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div><!-- shopping cart top bar -->
+                <div class="amm-shopping_cart-list-items mt-30" id="showCart">
+                    <ul>
+
+                    </ul>
+                </div> <!-- shopping_cart list items -->
+                <div class="amm-shopping_cart-btn">
+                    <div class="total pt-35 d-flex justify-content-between">
+                        <h5>Tổng tiền:</h5>
+                        <p><span>0 <sup>đ</sup></span></p>
+
+                    </div>
+                    <div class="cart-btn pt-25">
+                        <a class="main-btn"  href="./ViewCart.html">Xem giỏ hàng</a>
+                        <a class="main-btn main-btn-2" href="./payment.html">Thanh toán</a>
+                    </div>
+                </div>
+            </div> <!-- shopping_cart -->
+        </div>
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+<!--====== SHOPPING CART PART ENDS ======-->
+    <footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <th:block th:insert="~{header :: script}"></th:block>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.cate-slider').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            }, {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }, {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+
+            ]
+
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.product-slider').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            }, {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }, {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+
+            ]
+        });
+    });
+</script>
+<script>
+    $('.fader').hover(function() {
+        $(this).find("img:last").fadeToggle();
+    });
+
+</script>
+<script type='text/javascript'>
+    //<![CDATA[
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+        var daysSpan = clock.querySelector('.days');
+        var hoursSpan = clock.querySelector('.hours');
+        var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+
+        function updateClock() {
+            var t = getTimeRemaining(endtime);
+
+            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+
+    var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+    initializeClock('clockdiv', deadline);
+    //]]>
+</script>
+
+
+</html>

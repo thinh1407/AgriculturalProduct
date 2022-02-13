@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "~{admin-page/admin :: html_header-admin }">
+
+
+<body>
+    <div id="eq-loader">
+        <div class="eq-loader-div">
+            <div class="eq-loading dual-loader mx-auto mb-5"></div>
+        </div>
+    </div>
+
+    <!--  BEGIN NAVBAR  -->
+    <header th:replace="~{admin-page/admin  :: my-header-admin}"></header>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN MAIN CONTAINER  -->
+
+    <div class="main-container" id="container">
+        <div class="overlay"></div>
+        <div class="ps-overlay"></div>
+        <div class="search-overlay"></div>
+
+
+        <!--  BEGIN MODERN  -->
+
+        <div th:replace="~{admin-page/admin  :: modern-admin}"></div>
+        <!--  END MODERN  -->
+
+        <!--  BEGIN CONTENT PART  -->
+        <div id="content" class="main-content">
+            <!--  BEGIN CONTENT PART  -->
+
+            <div class=" main-infor" style="margin-top: 10%">
+                <h1 class="text-center">THÔNG TIN CÁ NHÂN</h1>
+                <div class="row profile">
+                    <div class="col-md-3 mt-50 mb-50">
+                        <div class="profile-sidebars">
+                            <div class="profile-userpic"> <img
+                                    src="https://hocwebgiare.com/thiet_ke_web_chuan_demo/bootstrap_user_profile/images/profile_user.jpg"
+                                    class="img-responsive " alt="Thông tin cá nhân" style="margin-left: 70px;">
+
+                            </div>
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name"><span th:text="${user.getName()}"></span></div>
+                                <div class="profile-usertitle-job"><span th:text="${user.email}"></span></div>
+                            </div>
+                            <div class="profile-userbuttons">
+                                <button type="button" class="btn btn-success btn-sm"> <a th:href="@{/admin}">Trang
+                                        chủ</a></button>
+                                <button type="button" class="btn btn-danger btn-sm"><a th:href="@{/logout}">Thoát ra</a></button>
+                            </div>
+                            </div>
+                        </div>
+                        <div class=" personal-infor ">
+                            <div class="col-md-8 col-sm-6 pt-3">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td> <label for="formGroupExampleInput" class="name-infor" style="padding-left: 0 !important;">Họ Tên:</label>
+                                            </td>
+                                            <td class="display-userName">
+                                                <label type="text" class="form-control" id="formGroupExampleInput"
+                                                       placeholder="Họ tên" th:utext="${user.getName()}"></label>
+                                            </td>
+                                            <td> <button type="submit" id="btn-edit" for="formGroupExampleInput"
+                                                    class="btn btn-warning ml-10">Chỉnh sửa</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="mt-3 filed-phone">
+                                    <tbody>
+                                    <tr>
+                                        <td> <label for="formGroupExampleInput" class="phone-infor" style="padding-left: 0 !important;">Số điện thoại:</label> </td>
+                                        <td class="display-userPhone">
+                                            <label type="number" max="10" class="form-control" id="formGroupExampleInput"
+                                                   placeholder="Số điện thoại" th:text="${user.phoneNumber}"></label>
+                                        </td>
+
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <table class="mt-3 filed-address">
+                                    <tbody>
+                                    <tr >
+                                        <td> <label for="formGroupExampleInput" class="address-infor">Địa chỉ:</label> </td>
+                                        <td class="display-userPhone">
+                                            <label type="text" class="form-control" id="formGroupExampleInput"
+                                                   placeholder="Địa chỉ" th:text="${user.address}"></label>
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <form th:object="${user}" th:action="@{/admin/edit-user}" method="post">
+
+                                    <div class="hidden-edit pt-3" style="height: 525px">
+                                        <div class="form-group ">
+                                            <label for="inputName" class="col-sm-6 col-form-label">Tên</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control appear-input mb-3 " id="inputName"
+                                                       placeholder="FirstName" aria-label="First name" th:field="*{firstName}">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <label for="inputName" class="col-sm-6 col-form-label">Họ</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control appear-input mb-3 " id="inputName"
+                                                       placeholder="LastName" aria-label="First name" th:field="*{lastName}">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="inputName" class="col-sm-6 col-form-label">Số điện thoại</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control appear-input mb-3 " id="inputName"
+                                                       placeholder="LastName" aria-label="First name" th:field="*{phoneNumber}">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="inputName" class="col-sm-6 col-form-label">Địa chỉ</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control appear-input mb-3 " id="inputName"
+                                                       placeholder="LastName" aria-label="First name" th:field="*{address}">
+
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary updated-infor ml-10 mt-25">Cập
+                                            nhật</button>
+                                        <button type="button" class="btn btn-secondary exit ml-10 mt-25">Hủy</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <div class="col-md-8 col-sm-6 pt-4">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td id="display-userName-2"><label for="inputpass"
+                                                    class="form-label">Email:</label>
+                                            </td>
+                                            <td>
+                                                <label type="email" required class="form-control" id="inputpass"
+                                                       placeholder="Mật khẩu" th:text="${user.email}"></label>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="col-md-8 col-sm-6 pt-4 pb-4">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><label for="inputpass" class="form-label pass-infor">Mật khẩu:</label>
+                                            </td>
+                                            <td class="display-userName-3">
+                                                <label type="password" required class="form-control" id="inputpass"
+                                                       placeholder="Mật khẩu" th:utext="'****************'"></label>
+                                            </td>
+                                            <td> <button type="submit" id="btn-edit-2"
+                                                    class="btn btn-warning ml-10">Chỉnh
+                                                    sửa</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <form th:object="${checkpassword}" th:action="@{/admin/edit-password}" method="post">
+                                    <div class=" hidden-pass pt-3">
+                                        <div class="form-group ">
+                                            <label for="inputName" class="col-sm-6 col-form-label">Nhập mật khẩu cũ:</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" required class="form-control appear-input mb-3 "
+                                                       id="inputName" placeholder="Old Password" th:field="${checkpassword.oldPassword}">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <label for="inputName" class="col-sm-6 col-form-label">Nhập mật khẩu mới</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" required class="form-control appear-input mb-3 "
+                                                       id="password" placeholder="New Password" aria-label="First name" th:field="${checkpassword.newPassword}">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="inputpass" class="col-sm-6 col-form-label">Xác nhận lại mật
+                                                khẩu</label>
+
+
+                                            <input type="password" class="form-control appear-input mb-3 "
+                                                   id="password_confirm" oninput="check(this)" placeholder="Confirm Password"
+                                                   aria-label="First name" th:field="${checkpassword.confirmPassword}">
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary updated-infor ml-10 mt-25">Cập
+                                            nhật</button>
+                                        <button type="submit" class="btn btn-secondary exit-pass ml-10 mt-25">Hủy</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--  END CONTENT PART  -->
+    </div>
+</div>
+  
+    <!--  BEGIN FOOTER  -->
+
+    <footer th:replace = "~{admin-page/admin  :: admin-footer}"> </footer>
+    <!--  END FOOTER  -->
+
+    <!--  BEGIN PROFILE SIDEBAR  -->
+    <aside th:replace="~{admin-page/admin  :: admin-profile}"></aside>
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+</body>
+    <th:block th:insert="~{admin-page/admin  :: script}"></th:block>
+    <script>
+
+        document.getElementById("btn-edit").onclick = function () {
+
+            document.querySelector(".personal-infor .hidden-edit").style.display = 'block';
+            document.querySelector(".personal-infor .hidden-edit").style.margin = '0 0 0 22%';
+            document.querySelector(".personal-infor .name-infor").style.padding = '0 0 0 20%';
+            document.querySelector(".personal-infor table .display-userName").style.display = 'none';
+            document.querySelector(".personal-infor #btn-edit").style.display = 'none';
+            document.querySelector(".personal-infor .filed-phone").style.display = 'none';
+
+            document.querySelector(".personal-infor .filed-address").style.display = 'none';
+        };
+        document.querySelector(".exit").onclick = function () {
+
+            document.querySelector(".personal-infor .hidden-edit").style.display = 'none';
+            document.querySelector(".personal-infor table .display-userName").style.display = 'block';
+            document.querySelector(".personal-infor .name-infor").style.padding = '0 0 0 0';
+            document.querySelector(".personal-infor #btn-edit").style.display = 'block';
+            document.querySelector(".personal-infor .filed-phone").style.display = 'block';
+            document.querySelector(".personal-infor .filed-address").style.display = 'block';
+        }
+
+
+            document.getElementById("btn-edit-2").onclick = function () {
+
+            document.querySelector(".personal-infor .hidden-pass").style.display = 'block';
+            document.querySelector(".personal-infor .hidden-pass").style.margin = '0 0 0 22%';
+            document.querySelector(".personal-infor .pass-infor").style.padding = '0 0 0 43%';
+            document.querySelector(".personal-infor table .display-userName-3").style.display = 'none';
+            document.querySelector(".personal-infor #btn-edit-2").style.display = 'none';
+        };
+        document.querySelector(".exit-pass").onclick = function () {
+            document.querySelector(".personal-infor .hidden-pass").style.display = 'none';
+            document.querySelector(".personal-infor table .display-userName-3").style.display = 'block';
+            document.querySelector(".personal-infor .pass-infor").style.padding = '0 0 0 24%';
+            document.querySelector(".personal-infor #btn-edit-2").style.display = 'block';
+        };
+    </script>
+
+</html>

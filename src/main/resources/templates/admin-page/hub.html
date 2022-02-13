@@ -1,0 +1,126 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "~{admin-page/admin :: html_header-admin }">
+
+<body>
+<div id="eq-loader">
+    <div class="eq-loader-div">
+        <div class="eq-loading dual-loader mx-auto mb-5"></div>
+    </div>
+</div>
+
+<!--  BEGIN NAVBAR  -->
+<header th:replace="~{admin-page/admin  :: my-header-admin}"></header>
+<!--  END NAVBAR  -->
+<!--  BEGIN PROFILE SIDEBAR  -->
+
+
+<div class="main-container" id="container">
+    <div class="overlay"></div>
+    <div class="ps-overlay"></div>
+    <div class="search-overlay"></div>
+
+    <!--  BEGIN MODERN  -->
+    <div th:replace="~{admin-page/admin  :: modern-admin}"></div>
+        <!--  END MODERN  -->
+
+        <!--  BEGIN CONTENT PART  -->
+        <div id="content" class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+                        <div class="statbox widget box">
+                            <div class="widget-content-area">
+                                <div class="widget-header mb-5 mt-5">
+                                    <div class="row">
+
+<!--                                        <div class="col-lg-12">-->
+<!--                                            <form th:action="@{'/admin/hub/fillByName/1'}" method="get" th:object="${input}">-->
+<!--                                                <div id="filter">-->
+<!--                                                    <input type="text" name="name" placeholder="Tên sản phẩm"-->
+<!--                                                           class="form-control" th:field="*{name}">-->
+<!--                                                    <button class="btn btn-info"-->
+<!--                                                        style="padding: 0 10px; background: none; border: none;"-->
+<!--                                                        title="Tìm kiếm" type="submit">-->
+<!--                                                        <i class="flaticon-search" aria-hidden="true"-->
+<!--                                                            style="color:#469408;font-size: 25px;line-height: 42px;"></i>-->
+<!--                                                    </button>-->
+<!--&lt;!&ndash;                                                    <input name="export" type="submit" value="Xuất Excel"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        class="btn btn-danger">&ndash;&gt;-->
+<!--                                                </div>-->
+<!--                                            </form>-->
+<!--                                        </div>-->
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive new-products">
+<!--                                    <script th:src="@{/getProduct.js}"></script>-->
+                                    <table class="table" id= "product-admin-table">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>ID</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Danh mục</th>
+                                                <th>Số lượng tồn </th>
+<!--                                                <th>Đã bán</th>-->
+<!--                                                <th>Số lượng tồn</th>-->
+                                                <th>Giá bán</th>
+                                                <th>Giá nhập</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        <th:block th:each="hub, state:${dsProduct}">
+                                            <tr>
+                                                <td th:utext="${hub.id}">#0001</td>
+                                                <td th:utext="${hub.name}">Cam sành</td>
+                                                <td th:utext="${hub.cate_name}"><span class="badge badge-info badge-pill">Hoa quả</span></td>
+                                                <td th:utext="${hub.quantityProd}">100</td>
+<!--                                                <td>50</td>-->
+<!--                                                <td>50</td>-->
+                                                <td th:utext="${format.formatPrice(hub.salePrice)}">
+                                                    50.000
+                                                </td>
+                                                <td th:utext="${format.formatPrice(hub.cost)}">20.000</td>
+                                            </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!--  END CONTENT PART  -->
+
+    </div>
+    <!-- END MAIN CONTAINER -->
+    <!-- END MAIN CONTAINER -->
+
+    <!--  BEGIN FOOTER  -->
+<footer th:replace = "~{admin-page/admin  :: admin-footer}"> </footer>
+<!--  END FOOTER  -->
+
+<!--  BEGIN PROFILE SIDEBAR  -->
+<aside th:replace="~{admin-page/admin  :: admin-profile}"></aside>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<th:block th:insert="~{admin-page/admin  :: script}"></th:block>
+<script>
+    $('#product-admin-table').DataTable({
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "language": {
+            "paginate": { "previous": "<i class='flaticon-arrow-left-1'></i>", "next": "<i class='flaticon-arrow-right'></i>" },
+            "info": "Hiện thị _PAGE_ trong _PAGES_"
+        },
+        drawCallback: function (settings) { $('[data-toggle="tooltip"]').tooltip(); },
+        "bDestroy": true
+    });
+</script>
+</html>

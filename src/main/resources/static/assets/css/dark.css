@@ -1,0 +1,230 @@
+/*dark css*/
+
+
+.orfarm-dark{
+	background: #292E3C;
+}
+
+.orfarm-header-area-dark .orfarm-header-main-menu ul > li > a{
+	color: #fff;
+}
+.orfarm-header-area-dark .header-nav-box .orfarm-btn-box .login-btn{
+	color: #fff;
+}
+
+
+
+.orfarm-hero-area-dark .orfarm-hero-content .orfarm-title{
+	color: #fff;
+}
+
+.orfarm-hero-area-dark .orfarm-hero-content p{
+	color: #fff;
+}
+
+.orfarm-hero-area-dark .orfarm-hero-content ul li a{
+	background: #fff;
+	border-color: #fff;
+	color: #0e1133;
+}
+
+.orfarm-hero-area-dark .orfarm-hero-content ul li a:hover{
+	background: transparent;
+	color: #fff;
+}
+
+.orfarm-hero-area-dark .orfarm-hero-content ul li a.item-2{
+	color: #fff;
+}
+.orfarm-hero-area-dark .orfarm-hero-content ul li a.item-2:hover{
+	background: #fff;
+	color: #0e1133;
+}
+
+.orfarm-service-area.orfarm-service-area-dark{
+	background: #1f2128;
+}
+
+.orfarm-service-area-dark .orfarm-section-title .orfarm-title{
+	color: #fff;
+}
+.orfarm-service-area-dark .orfarm-section-title p{
+	color: #fff;
+}
+
+.orfarm-service-area-dark  .orfarm-single-service{
+	background: #292E3C;
+}
+
+.orfarm-service-area-dark .orfarm-single-service p,
+.orfarm-service-area-dark .orfarm-single-service .orfarm-title{
+	color: #fff;
+}
+
+.orfarm-features-area-dark  .orfarm-features-tabs-btn .nav a{
+	color: #fff;
+}
+
+.orfarm-features-area-dark .orfarm-features-content p,
+.orfarm-features-area-dark .orfarm-features-content .title{
+	color: #fff;
+}
+
+.orfarm-traffic-area-dark .orfarm-traffic-title p,
+.orfarm-traffic-area-dark .orfarm-traffic-title .title{
+	color: #fff;
+}
+
+.orfarm-traffic-area-dark .orfarm-traffic-service p,
+.orfarm-traffic-area-dark .orfarm-traffic-service .title{
+	color: #fff;
+}
+
+.orfarm-traffic-area-dark .traffic-btn a.main-btn{
+	color: #fff;
+}
+.orfarm-traffic-area-dark .traffic-btn a.main-btn:hover{
+	background: #fff;
+	color: #2b70fa;
+}
+
+.orfarm-team-area-dark .orfarm-section-title p,
+.orfarm-team-area-dark .orfarm-section-title .orfarm-title{
+	color: #fff;
+}
+
+.orfarm-team-area-dark .orfarm-team-item .content span,
+.orfarm-team-area-dark .orfarm-team-item .content .title{
+	color: #fff;
+}
+
+.orfarm-team-area-dark .team-btn a{
+	color: #fff;
+}
+
+
+
+.orfarm-faq-area-dark.orfarm-faq-area,
+.orfarm-pricing-area-dark.orfarm-pricing-area{
+	background: #1f2128;
+}
+
+.orfarm-pricing-area-dark .orfarm-section-title p,
+.orfarm-pricing-area-dark .orfarm-section-title .orfarm-title{
+	color: #fff;
+}
+
+
+
+.orfarm-pricing-area-dark.orfarm-pricing-area ul.switch-toggler-list li a{
+	color: #fff;
+	opacity: 0.1;
+}
+.orfarm-pricing-area-dark.orfarm-pricing-area ul.switch-toggler-list li.active a{
+	color: #fff;
+	opacity: 1;
+}
+
+
+.orfarm-pricing-area-dark.orfarm-pricing-area .pricing-one__single{
+	background: #292E3C;
+	color: #fff;
+}
+
+.orfarm-pricing-area-dark .pricing-one__single .pricig-heading h6{
+	color: #fff;
+}
+
+.orfarm-pricing-area-dark .pricing-one__single .pricig-heading .price-range{
+	color: #fff;
+}
+
+.orfarm-pricing-area-dark .pricing-one__single .pricig-heading .price-range p{
+	color: #fff;
+}
+
+.orfarm-pricing-area-dark .pricing-one__single .pricig-heading > p{
+	color: #fff;
+}
+
+.orfarm-pricing-area-dark .pricing-one__single .pricig-body ul li{
+	color: #fff;
+}
+
+.orfarm-pricing-area-dark  .pricing-one__single .pricig-body .pricing-btn a{
+	color: #fff;
+}
+
+
+
+
+.orfarm-faq-area.orfarm-faq-area-dark .orfarm-section-title p,
+.orfarm-faq-area.orfarm-faq-area-dark .orfarm-section-title .orfarm-title{
+	color: #fff;
+}
+
+
+.orfarm-faq-area.orfarm-faq-area-dark .faq-accrodion .accrodion{
+	background: #292E3C;
+	
+}
+.orfarm-faq-area.orfarm-faq-area-dark .faq-accrodion .accrodion .accrodion-inner,
+.orfarm-faq-area.orfarm-faq-area-dark .faq-accrodion .accrodion.active .accrodion-inner{
+	border-color: #292E3C;
+	background: #292E3C;
+}
+
+.orfarm-faq-area.orfarm-faq-area-dark .faq-accrodion .accrodion .accrodion-content p,
+.orfarm-faq-area.orfarm-faq-area-dark .faq-accrodion .accrodion .accrodion-title h4{
+	color: #fff;
+}
+
+.orfarm-blog-area-dark .orfarm-section-title p,
+.orfarm-blog-area-dark .orfarm-section-title .orfarm-title{
+	color: #fff;
+}
+.orfarm-blog-area-dark .orfarm-blog-item .content > a,
+.orfarm-blog-area-dark .orfarm-blog-item .content .title a,
+.orfarm-blog-area-dark .orfarm-blog-item .content .blog-meta ul li a,
+.orfarm-blog-area-dark .orfarm-blog-item .content .blog-meta ul li{
+	color: #fff;
+}
+
+.orfarm-blog-area-dark .orfarm-blog-item .content > a:hover,
+.orfarm-blog-area-dark .orfarm-blog-item .content .title a:hover{
+	color: #2b70fa;
+}
+
+
+.orfarm-footer-area-dark.orfarm-footer-area{
+	background: #1f2128;
+}
+
+.orfarm-footer-area-dark .footer-about-widget a,
+.orfarm-footer-area-dark .footer-about-widget p{
+	color: #fff;
+}
+.orfarm-footer-area-dark .footer-about-widget a:hover{
+	color: #2b70fa;
+}
+
+.orfarm-footer-area-dark .footer-widget-info ul li a,
+.orfarm-footer-area-dark .footer-widget-info .title,
+.orfarm-footer-area-dark .footer-navigation ul li a,
+.orfarm-footer-area-dark .footer-navigation .title{
+	color: #fff;
+}
+.orfarm-footer-area-dark .footer-navigation ul li a:hover{
+	color: #2b70fa;
+}
+
+.orfarm-footer-area-dark .footer-copyright .copyright-text p{
+	color: #fff;
+}
+
+.orfarm-footer-area-dark  .footer-copyright .apps-download-btn ul li a:hover{
+	color: #fff;
+}
+.orfarm-footer-area-dark  .footer-copyright .apps-download-btn ul li a.item-2{
+	color: #fff;
+}

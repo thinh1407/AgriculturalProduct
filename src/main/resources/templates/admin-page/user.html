@@ -1,0 +1,137 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "~{admin-page/admin :: html_header-admin }">
+
+<body>
+<div id="eq-loader">
+    <div class="eq-loader-div">
+        <div class="eq-loading dual-loader mx-auto mb-5"></div>
+    </div>
+</div>
+
+<!--  BEGIN NAVBAR  -->
+<header th:replace="~{admin-page/admin  :: my-header-admin}"></header>
+<!--  END NAVBAR  -->
+<!--  BEGIN PROFILE SIDEBAR  -->
+
+
+<div class="main-container" id="container">
+    <div class="overlay"></div>
+    <div class="ps-overlay"></div>
+    <div class="search-overlay"></div>
+
+    <!--  BEGIN MODERN  -->
+    <div th:replace="~{admin-page/admin  :: modern-admin}"></div>
+        <!--  END MODERN  -->
+        <!--  BEGIN CONTENT PART  -->
+        <div id="content" class="main-content">
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="page-header ">
+                                    <div class="page-title col-xl-12 col-md-12 col-sm-12 col-12 mb-3">
+                                        <h3>Danh sách khách hàng
+                                        </h3>
+
+
+                                    </div>
+                                </div>
+
+<!--                                <div class="widget-header mb-5">-->
+<!--                                    <div class="row">-->
+
+<!--                                        <div class="col-lg-12">-->
+<!--                                            <form class="top-action" method="GET" action="">-->
+<!--                                                <div id="filter">-->
+<!--                                                    <input type="text" name="id" placeholder="ID" value=""-->
+<!--                                                        class="form-control">-->
+<!--                                                    <input type="text" name="address" placeholder="Tên" value=""-->
+<!--                                                        class="form-control">-->
+<!--                                                    <input type="text" name="address" placeholder="Số điện thoại"-->
+<!--                                                        value="" class="form-control">-->
+<!--                                                    <input type="email" name="address" placeholder="Email" value=""-->
+<!--                                                        class="form-control">-->
+
+<!--                                                    <button class="btn btn-info"-->
+<!--                                                        style="padding: 0 10px; background: none; border: none;"-->
+<!--                                                        title="Tìm kiếm">-->
+<!--                                                        <i class="flaticon-search" aria-hidden="true"-->
+<!--                                                            style="color:#469408;font-size: 25px;line-height: 42px;"></i>-->
+<!--                                                    </button>-->
+<!--                                                    <input name="export" type="submit" value="Xuất Excel"-->
+<!--                                                        class="btn btn-danger">-->
+
+<!--                                                </div>-->
+<!--                                            </form>-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="widget-content widget-content-area">
+                                <div class="table-responsive mb-4">
+                                    <table id="ecommerce-product-list" class="table  table-bordered">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>ID</th>
+
+                                                <th>Họ Tên</th>
+
+                                                <th>SĐT</th>
+                                                <th>Email</th>
+
+                                                <th>Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            <tr th:each="customer : ${customerList}">
+                                                <td th:text="${customer.id}">001</td>
+                                                <td th:text="${customer.name}">Trần Thị Lan</td>
+
+                                                <td th:text="${customer.phoneNumber}">0385647925</td>
+                                                <td th:text="${customer.email}">cb@gmail.com</td>
+                                                <td class="align-center">
+                                                    <ul class="table-controls">
+
+                                                        <li>
+                                                            <a th:href="@{'/admin/userManager/delete/' + ${customer.id}}" data-toggle="tooltip"
+                                                                data-placement="top" title="Delete">
+                                                                <i class="flaticon-delete-5"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  END CONTENT PART  -->
+    </div>
+
+    <!--  BEGIN FOOTER  -->
+
+<footer th:replace = "~{admin-page/admin  :: admin-footer}"> </footer>
+<!--  END FOOTER  -->
+
+<!--  BEGIN PROFILE SIDEBAR  -->
+<aside th:replace="~{admin-page/admin  :: admin-profile}"></aside>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<th:block th:insert="~{admin-page/admin  :: script}"></th:block>
+<!--  END CUSTOM SCRIPT FILES  -->
+
+</html>

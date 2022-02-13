@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin-page/admin :: html_header-admin }">
+
+<body>
+    <div id="eq-loader">
+        <div class="eq-loader-div">
+            <div class="eq-loading dual-loader mx-auto mb-5"></div>
+        </div>
+    </div>
+
+    <!--  BEGIN NAVBAR  -->
+    <header th:replace="~{admin-page/admin  :: my-header-admin}"></header>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN MAIN CONTAINER  -->
+
+    <div class="main-container" id="container">
+        <div class="overlay"></div>
+        <div class="ps-overlay"></div>
+        <div class="search-overlay"></div>
+
+     
+        <!--  BEGIN MODERN  -->
+
+        <div th:replace="~{admin-page/admin  :: modern-admin}"></div>
+        <!--  END MODERN  -->
+
+        <!--  BEGIN CONTENT PART  -->
+        <div id="content" class="main-content">
+            <div class="container">
+                
+                
+                <div class="row ">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                
+                                    <div class="page-header">
+                                        <div class="page-title">
+                                            <h3>Danh mục sản phẩm</h3>
+                                            
+                                            <a th:href="@{/admin/category/add}" class="btn btn-info form-control">Thêm danh mục sản phẩm</a>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="widget-content widget-content-area">
+                                <div class="table-responsive mb-4">
+                                    <table id="ecommerce-product-list" class="table  table-bordered">
+                                        <thead>
+                                            <tr class="text-center">
+
+                                                <th>ID</th>
+                                                <th>Ảnh</th>
+                                                <th>Tên</th>
+                                               
+                                                <th class="align-center">Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <th:block th:each="category : ${categoryList}">
+                                            <tr>
+                                                <td th:text="${category.id}" class="align-center"></td>
+                                                <td class="text-center">
+                                                    <a class="product-list-img" href="javascript: void(0);">
+                                                        <img th:src="@{'/image/ImageOrFarm/'+${category.image}}" alt="product">
+                                                    </a>
+                                                </td>
+                                                <td th:text="${category.name}" class="align-center"></td>
+                                                <td class="align-center">
+                                                    <ul class="table-controls">
+                                                        <li>
+                                                            <a th:href="@{'/admin/category/edit/' + ${category.id}}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                                <i class="flaticon-edit"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a th:href="@{'/admin/category/delete/' + ${category.id}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                                <i class="flaticon-delete-5"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+
+                                            </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  END CONTENT PART  -->
+    </div>
+    <footer th:replace="~{admin-page/admin  :: admin-footer}"></footer>
+    <!--  END FOOTER  -->
+
+    <!--  BEGIN PROFILE SIDEBAR  -->
+    <aside th:replace="~{admin-page/admin  :: admin-profile}"></aside>
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+</body>
+    <th:block th:insert="~{admin-page/admin  :: script}"></th:block>
+    <script>
+        $('#ecommerce-product-list').DataTable({
+            "lengthMenu": [5, 10, 20, 50, 100],
+            "language": {
+                "paginate": { "previous": "<i class='flaticon-arrow-left-1'></i>", "next": "<i class='flaticon-arrow-right'></i>" },
+                "info": "Hiện thị _PAGE_ trong _PAGES_"
+            },
+            drawCallback: function (settings) { $('[data-toggle="tooltip"]').tooltip(); },
+            "bDestroy": true
+        });
+    </script>
+</html>
+
+<!--  END CUSTOM SCRIPT FILES  -->

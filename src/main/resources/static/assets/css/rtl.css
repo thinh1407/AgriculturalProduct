@@ -1,0 +1,84 @@
+/*==== rtl css ====*/
+
+
+
+.orfarm-traffic-area.orfarm-traffic-area-rtl .traffic-thumb {
+	left: 0;
+	right: auto;
+	transform: translateY(-50%) rotateY(-180deg);
+}
+
+
+.orfarm-traffic-area-rtl .orfarm-traffic-title{
+	padding-left: 220px;
+	padding-right: 0;
+}
+
+
+.orfarm-traffic-area-rtl .orfarm-traffic-service .icon{
+	right: 0;
+	left: auto;
+}
+
+
+
+.orfarm-faq-area-rtl .faq-accrodion .accrodion .accrodion-title::after,
+.orfarm-faq-area-rtl .faq-accrodion .accrodion .accrodion-title::before{
+	right: auto;
+	left: 30px;
+}
+
+
+.orfarm-project-area.orfarm-project-area-rtl .orfarm-project-box .orfarm-project-thumb{
+	left: 70px;
+	right: auto;
+}
+
+
+
+.orfarm-project-area-rtl .orfarm-project-content .input-box input{
+	padding-left: 0;
+	padding-right: 30px;
+}
+
+
+.orfarm-project-area-rtl .orfarm-project-content .input-box button{
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+
+
+
+
+.orfarm-header-area-rtl .orfarm-header-main-menu ul{
+	text-align: right;
+}
+
+
+
+
+
+.orfarm-header-area-rtl .orfarm-header-main-menu ul > li .sub-menu{
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

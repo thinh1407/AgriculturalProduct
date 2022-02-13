@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+
+<body>
+
+    <header th:replace="header :: my-header"></header>
+
+    <section class="breadcrum">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb container">
+                <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tạo tài khoản</li>
+            </ol>
+        </nav>
+    </section>
+
+    <!--====== SHOPPING CART PART ENDS ======-->
+    <main role="main">
+        <section class="section-ptb customer-page register-page" style="padding-bottom: 80px;">
+            <div class="container">
+                <div class="row log-acc-page register-acc-page pt-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-12">                     
+                            <div class="acc-page">
+                                <div class="login">
+                                    <form th:action="@{/processRegister}" method="post" th:object="${user}">
+                                        <div class="login-form-container">
+                                            <div class="title-text ">
+                                                <h2>Tạo tài khoản</h2>
+                                                <p>Vui lòng đăng kí thông tin vào bên dưới!!!</p>
+                                            </div>
+                                        <div class="form-group fill-form log-firstName">
+                                            <p class="dz-error-message" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="FirstName" th:field ="*{firstName}">
+
+                                        </div>
+                                        <div class="form-group fill-form log-lastName">
+                                            <p class="dz-error-message" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="LastName" th:field = "*{lastName}">
+
+                                        </div>
+                                        <div class="form-group fill-form log-email">
+                                            <p class="dz-error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                                            <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" th:field = "*{email}">
+
+<!--                                            <p class="dz-error-message" th:if="${#fields.hasErrors('emailDuplicate')}" th:errors="${}"></p>-->
+                                          </div>
+                                          <div class="form-group fill-form log-lastName">
+                                              <p class="dz-error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" th:field = "*{password}" required minlength="6" maxlength="10">
+
+                                          </div>
+                                        <button type="submit" class="btn btn-primary btn-warning form-control">Đăng kí</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>  
+                    <div class="col-lg-4 col-sm-12">  
+                            <div class="acc-page-2">
+                                <div class="side-form">
+                                    <div class="acc-title">
+                                        <h6>Bạn đã có tài khoản? </h6>
+                                        <div class="account-option-action">
+                                            <a th:href="@{/login}" id="customer_register">
+                                                Log in
+                                                <!-- <button type="button" class="btn btn-outline-warning"></button> -->
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="term-privacy">
+                                        <p class="term-con">
+                                            <span>
+                                                <sup>*</sup>
+                                            </span>
+                                            <a href="" target="_blank"> Điều khoản và điều kiện</a>
+                                        </p>
+                                        <p class="pri-pol ">
+
+                                            <span> Sự riêng tư và bảo mật của bạn không quan trọng đối với chúng tôi. Để
+                                                biết thêm thông tin về cách chúng tôi sử dụng dữ liệu của bạn, hãy đọc
+                                                điều khoản dưới đây.
+                                            </span>
+                                            <br>
+                                            <a href="" target="_blank" style="margin: 5px"> Chính sách điều khoản</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <th:block th:insert="~{header :: script}"></th:block>
+
+</html>

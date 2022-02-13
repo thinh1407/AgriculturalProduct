@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{header :: html_header}"></head>
+
+<body>
+<header th:replace="header :: my-header"></header>
+<section class="breadcrum">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb container">
+            <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
+        </ol>
+    </nav>
+</section>
+<!--====== SHOPPING CART PART START ======-->
+
+<div th:replace="index :: my-cart"></div>
+
+<!--====== SHOPPING CART PART ENDS ======-->
+
+<div class="orfarm-shop-grid-area pt-100 pb-50 ">
+    <div class="container">
+        <div class="row pb-35">
+            <div class="col-lg-3 order-2 order-lg-1">
+                <div class="orfarm-shop-sidebar">
+                    <div class="shop-price-filter">
+                        <form th:action="@{'/category/'+${categoryId}+'/fill-result/1'}" method="get" th:object="${filter}">
+                            <h4 class="title">Lọc theo giá</h4>
+                            <div class="price-range">
+                                <div class="dropdown">
+                                    <label>Từ:</label>
+                                    <!--                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">-->
+                                    <!--                                    <span class="caret"></span></button>-->
+                                    <select class="dropdown-toggle" th:field="${filter.fillStart}">
+                                        <option th:value=0 th:text="0đ"
+                                                th:selected="${filter.fillStart}"
+                                        ></option>
+                                        <option th:value=20000 th:text="20000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                        <option th:value=30000 th:text="30000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                        <option th:value=40000 th:text="40000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                        <option th:value=50000 th:text="50000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                        <option th:value=100000 th:text="100000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                        <option th:value=200000 th:text="200000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                        <option th:value=500000 th:text="500000đ"
+                                                th:selected="${filter.fillStart}"></option>
+                                    </select>
+                                </div>
+                                <div class="dropdown">
+                                    <label>Đến:</label>
+                                    <!--                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">-->
+                                    <!--                                    <span class="caret"></span></button>-->
+                                    <select class="dropdown-toggle" th:field="${filter.fillEnd}">
+                                        <option th:value=0 th:text="0đ"
+                                                th:selected="${filter.fillEnd}"
+                                        ></option>
+                                        <option th:value=20000 th:text="20000đ" th:selected="${filter.fillEnd}"
+                                        ></option>
+                                        <option th:value=30000 th:text="30000đ"
+                                                th:selected="${filter.fillEnd}"></option>
+                                        <option th:value=40000 th:text="40000đ"
+                                                th:selected="${filter.fillEnd}"></option>
+                                        <option th:value=50000 th:text="50000đ"
+                                                th:selected="${filter.fillEnd}"></option>
+                                        <option th:value=100000 th:text="100000đ"
+                                                th:selected="${filter.fillEnd}"></option>
+                                        <option th:value=200000 th:text="200000đ"
+                                                th:selected="${filter.fillEnd}">
+                                        <option th:value=500000 th:text="500000đ"
+                                                th:selected="${filter.fillEnd}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-warning form-control">Lọc</button>
+                        </form>
+                    </div>
+                    <div class="shop-category-widget">
+                        <h4 class="title">Danh Mục Sản Phẩm</h4>
+                        <ul>
+                            <li class="fruit" th:each="item, state : ${listCategory}">
+                                <a th:href="@{'/category/' + ${item.id}}" th:text="${item.name}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="shop-best-product-widget">
+                        <h4 class="title">Best Seller</h4>
+                        <div class="shop-product" th:each="best, state : ${bestSeller}">
+                            <div class="thumb">
+                                <img th:src="@{'/image/ImageOrFarm/'+${best.image}}" alt="">
+                            </div>
+                            <div class="content">
+                                <a th:href="@{'/product/' + ${best.id}}" th:text="${best.name}"></a>
+                                <span th:text="${format.formatPrice(best.salePrice)}"></span><sup>đ</sup>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-tags-bar">
+                        <h4 class="title">Sản phẩm phổ biến</h4>
+                        <ul>
+                            <li><a href="#">Chuối</a></li>
+                            <li><a href="#">Thịt trâu</a></li>
+                            <li><a href="#">Táo</a></li>
+                            <li><a href="#">Gạo</a></li>
+                            <li><a href="#">Cà Phê</a></li>
+                            <li><a href="#">Hạt Điều</a></li>
+                            <li><a href="#">cải Bắp</a></li>
+                            <li><a href="#">Cải Gồng</a></li>
+                        </ul>
+                    </div>
+                    <div class="shop-sidebar">
+                        <a href="./shop.html" class="image-hover">
+                            <img th:src="@{/image/banner10-min.jpg}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div class="row">
+                    <div class="banner-collection pb-5 ">
+                        <img th:src="@{'/image/ImageOrFarm/'+${category.image}}" style="width: 1100px" height="262px" alt="">
+                    </div>
+                </div>
+                <div class="shop-grid-topbar d-flex justify-content-between align-items-center">
+                    <form th:action="@{'/category/'+${category.id}+'/fillByName/1'}" method="get" th:object="${input}">
+                        <div class="ml-12 mt-24">
+                            <input id="input-search" type="text"
+                                   class="form__field-input--text" value=""
+                                   placeholder="Nhập thông tin tìm kiếm ..." th:field="*{name}"/>
+                        </div>
+                        <button type="submit" class="d-none"></button>
+                    </form>
+                    <span>Tổng số <span th:text="${sum}"></span> sản phẩm.</span>
+                    <select id="product">
+                        <option value="volvo">Mới nhất</option>
+                        <option value="saab">Bán chạy nhất</option>
+                        <option value="vw">Đánh giá tốt</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" th:each="pro, state : ${listProduct}" id = "list-product">
+                        <div class="single-shop-box">
+                            <div class="thumb text-center">
+                                <img th:src="@{'/image/ImageOrFarm/'+${pro.image}}" alt="">
+                                <div class="reborn">
+                                    <span th:if="${pro.percentDiscount!=0}">Sale</span>
+                                </div>
+                                <div class="cart-list-icon">
+                                    <ul>
+                                        <li class="shopping-bag"><a th:href="@{#}"><i
+                                                class="fal fa-shopping-bag"></i></a></li>
+                                        <li><a th:href="@{#}"><i class="fal fa-heart"></i></a></li>
+                                        <li><a th:href="@{'/product/' + ${pro.id}}"><i class="fal fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star-half-alt"></i></li>
+                                </ul>
+                                <input type="hidden" id="productId" value="1">
+                                <a th:href="@{'/product/' + ${pro.id}}" th:text="${pro.name}"></a>
+                                <div class="pricing">
+                                    <th:block th:if="${pro.percentDiscount!=0}">
+                                        <div class="discount-price">
+                                            <th:block th:with="discountPrice=${(pro.salePrice * (100 - pro.percentDiscount))/100}">
+                                                <span th:text="${format.formatPrice(discountPrice)}"></span><sup>đ</sup>
+                                            </th:block>
+                                        </div>
+                                        <div class="regular-price">
+                                            <span th:text="${format.formatPrice(pro.salePrice)}+'đ'"></span>
+                                        </div>
+                                    </th:block>
+                                    <th:block th:unless="${pro.percentDiscount!=0}">
+                                        <div class="discount-price">
+                                            <span th:text="${format.formatPrice(pro.salePrice)}"></span><sup>đ</sup>
+                                        </div>
+                                    </th:block>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__row grid__row--spbw grid__row--item-center mt-50" id="div-pageable">
+                    <nav aria-label="Page navigation example"
+                         class="grid__row grid__row--spbw grid__row--item-center text-font-16"
+                         style="margin: auto; text-align: center;">
+                        <div class="pagination-section">
+                            <ul
+                                    class="pagination pagination-style-1 pagination-rounded justify-content-end mt-3 mb-3">
+                                <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled' }">
+                                    <a class="page-link" th:href="@{'/category/'+${categoryId}+'/fillByName/1'+'?name='+${currentFilter}}"
+                                       tabindex="-1">First</a>
+                                </li>
+                                <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled' }">
+                                    <a class="page-link"
+                                       th:href="@{'/category/'+${categoryId}+'/fillByName/'+${currentPage - 1}+'?name='+${currentFilter}}"
+                                       aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <th:block th:if="${totalPage <= 10 && totalPage > 0}">
+                                    <li th:each="i : ${#numbers.sequence(1, totalPage)}"
+                                        th:class="${currentPage != i ? 'page-item' : 'page-item active' }">
+                                        <a class="page-link" th:href="@{'/category/'+${categoryId}+'/fillByName/'+ ${i}+'?name='+${currentFilter}}"
+                                           th:text="${i}"></a>
+                                    </li>
+                                </th:block>
+                                <th:block th:if="${totalPage > 10}">
+                                    <th:block
+                                            th:if="${currentPage <= 5 || currentPage >= totalPage - 4}">
+                                        <li th:each="i : ${#numbers.sequence(1, 5)}"
+                                            th:class="${currentPage != i ? 'page-item' : 'page-item active' }"><a
+                                                class="page-link" th:href="@{'/category/'+${categoryId}+'/fillByName/'+ ${i}+'?name='+${currentFilter}}"
+                                                th:text="${i}"></a></li>
+                                        <li class="page-item"><a class="page-link"
+                                                                 th:href="@{'/category/'+${categoryId}+'/fillByName/'+ '/6'+'?name='+${currentFilter}}">...</a>
+                                        </li>
+                                        <li th:each="i : ${#numbers.sequence(totalPage - 4, totalPage)}"
+                                            th:class="${currentPage != i ? 'page-item' : 'page-item active' }"><a
+                                                class="page-link" th:href="@{'/category/'+${categoryId}+'/fillByName/'+ ${i}+'?name='+${currentFilter}}"
+                                                th:text="${i}"></a></li>
+                                    </th:block>
+
+                                    <th:block
+                                            th:if="${currentPage > 5 && currentPage < totalPage - 4}">
+                                        <li class="page-item"><a class="page-link"
+                                                                 th:href="@{'/category/'+${categoryId}+'/fillByName/'+ ${currentPage - 5}+'?name='+${currentFilter}}">...</a>
+                                        </li>
+                                        <li
+                                                th:each="i : ${#numbers.sequence(currentPage - 4, currentPage + 4)}"
+                                                th:class="${currentPage != i ? 'page-item' : 'page-item active' }">
+                                            <a
+                                                    class="page-link" th:href="@{'/category/'+${categoryId}+'/fillByName/'+ + ${i}+'?name='+${currentFilter}}"
+                                                    th:text="${i}"></a></li>
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               th:href="@{'/category/'+${categoryId}+'/fillByName/'+ ${currentPage  + 5}+'?name='+${currentFilter}}">...</a>
+                                        </li>
+                                    </th:block>
+
+                                </th:block>
+
+
+                                <li
+                                        th:class="${currentPage < totalPage ? 'page-item' : 'page-item disabled' }"><a
+                                        class="page-link"
+                                        th:href="@{'/category/'+${categoryId}+'/fillByName/' + ${currentPage + 1}+'?name='+${currentFilter}}"
+                                        aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+                                        class="sr-only">Next</span>
+                                </a></li>
+                                <li
+                                        th:class="${currentPage < totalPage ? 'page-item' : 'page-item disabled' }"><a
+                                        class="page-link"
+                                        th:href="@{'/category/'+${categoryId}+'/fillByName/'+ ${totalPage}+'?name='+${currentFilter}}" tabindex="-1">Last</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{footer :: html_footer}"></footer>
+    </div>
+</div>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<th:block th:insert="~{header :: script}"></th:block>
+</html>

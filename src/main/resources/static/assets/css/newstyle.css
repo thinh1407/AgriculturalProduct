@@ -1,0 +1,416 @@
+.hotline-text {
+    padding-top: 48px;
+    padding-right: 276px;
+    text-align: right;
+}
+.hotline-text h4{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 18px;
+}
+.hotline-text h3{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #c00017;
+    font-size: 20px;
+}
+.search-form-center p{
+    margin-left: 38px;
+    color: black;
+}
+.search-form-center p a{
+    color: #ff5a21;
+}
+.page-header-dashboard {
+    display: flex;
+    width: 100%;
+    height: 200px;
+}
+.search-form-dashboard {
+    display: flex;
+    height: 64px;
+    margin-top: 40px;
+    position: relative;
+    border: 2px solid #ff5a21;
+    width: 710px;
+    border-radius: 38px;
+}
+.search-form-dashboard .dropdown .dropdown-toggle{
+    height: 60px;
+    line-height: 54px;
+    border-radius: 38px 0 0 38px;
+    font-size: 22px;
+    background-color: #ccc;
+    padding: 0 12px;
+    border: none;
+}
+.search-form-dashboard .dropdown .dropdown-menu {
+    box-shadow: 0px 2px 8px;
+    left: 10px !important;
+    background-color: #ffaf74;
+    border: none;
+}
+.search-form-dashboard .form-autocomplete{
+    height: 60px;
+    border: none;
+    color: #ccc;
+    padding: 0 0 0 10px;
+    margin: 0;
+}
+.search-form-dashboard .form-submit {
+    border: none;
+    color: #fff;
+    height: 60px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: url(../img/btn-search.png) no-repeat center 14px #ff5a21;
+    width: 78px;
+    text-indent: -999px;
+    outline: none;
+    text-align: center;
+    border-radius: 38px;
+    position: absolute;
+    right: 0;
+    padding: 0;
+}
+.widget-content-area {
+    margin: 30px;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+.card-element-br {
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.widget-content-area .card-content p  {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 18px !important;
+    color: #000;
+}
+.social-likes .card .icon i{
+    font-size: 60px;
+    background-color: #ffaf74;
+    color: #333;
+}
+.card-element-br:hover {
+    background: url(../img/hover-li-dash-menu.png) no-repeat 0px 0px #264072;
+}
+.list-image-extension {
+    width: 90%;
+    margin-left: 5%;
+}
+.font-icon-mobie {
+    text-align: center;
+}
+.font-icon-mobie i {
+    font-size: 40px;
+    padding: 20px 20px;
+    border-radius: 50%;
+    margin: 10px;
+    background-color: #ffaf74;
+}
+.font-icon-mobie i:last-child{
+    margin-top: 6px;
+}
+.menu-product-web {
+    width: 80%;
+    border-radius: 20px;
+    background-color: #ffaf74;
+    font-weight: 700;
+    box-shadow: 0 4px 4px;
+}
+.form-order-web h3 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #000;
+    margin-top: 30px;
+}
+.form-order-web .form-order-product {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+}
+.form-order-product p{
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.form-order-button {
+    margin-left: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.form-order-button > input {
+    width: 270px;
+    height: 52px;
+}
+.form-order-button .form-select {
+    height: 52px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+.form-order-button > button{
+    background-color: #1a73e9;
+    height: 52px;
+}
+.form-order-button > button i {
+    font-size: 26px;
+    color: #000;
+}
+.form-order-check {
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    justify-content: flex-start;
+}
+.form-order-check .dropdown .dropdown-toggle{
+    background-color: #fff;
+    color: #000 !important;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #333;
+    height: 52px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 0 22px;
+}
+.form-order-check .dropdown .dropdown-toggle:after{
+    color: #000;
+    font-size: 12px;
+}
+.form-order-button button:last-child {
+    background-color: #1abc9c;
+}
+.order-content-page {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 150px;
+}
+.order-content-page .section-title{
+    text-align: center;
+    width: 100%;
+}
+.order-content-page h2 {
+    font-size: 40px;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 600;
+    position: relative;
+    margin-top: 0;
+    color: #000;
+}
+.order-content-page .section-title h2::before {
+    position: absolute;
+    left: 50%;
+    top: 56px;
+    height: 10px;
+    width: 74px;
+    margin-left: -37px;
+    background: #82B440;
+    content: "";
+    z-index: 1;
+}
+.order-content-page .section-title p {
+    font-size: 20px;
+    color: #333;
+}
+.order-content-page .section-title p a{
+    color: #1abc9c;
+}
+.process-order .table > thead > tr > th {
+    color: #000;
+    border-bottom: 2px solid #ccc;
+}
+.process-order .table > thead > tr > th > span {
+    color: #c00017;
+}
+.process-order .table > tbody > tr > td {
+    border-bottom: 1px solid #ccc;
+}
+.form-control {
+    height: 50px;
+    font-size: 14px;
+}
+textarea.form-control {
+    height: 50px;
+}
+.process-order-img {
+    height: 46px;
+}
+.form-order-product .message-alert {
+    padding: 30px 20px;
+}
+.form-order-product .message-alert ul {
+    display: flex;
+    background-color: #e5e5e5;
+    padding: 30px;
+}
+.form-order-product .message-alert ul li {
+    list-style-type: none;
+    width: 15%;
+    color: #000;
+    text-align: center;
+}
+.form-order-product .message-alert ul li.blue b {
+    color: #2ea300;
+}
+.form-order-product .message-alert ul li.red b {
+    color: #c00017;
+}
+.form-order-product  .uk-text-right{
+    text-align: right;
+    padding-right: 40px;
+    color: #000;
+}
+.form-order-product  .uk-text-right .uk-button-success {
+    background-color: #8cc14c;
+    color: #fff;
+    padding: 10px;
+    margin-right: 6px;
+}
+.dataTables_wrapper.dt-bootstrap4 .table thead th {
+    background-color: #ffaf74;
+}
+.view-footer-excel {
+    width: 120px;
+    padding-bottom: 40px;
+}
+.view-footer-excel select {
+    background-color: #ffaf74;
+    border: none;
+    margin-left: 30px;
+    margin-bottom: 40px;
+}
+/* =====================withdrawal request ======================== */
+.content-page-center {
+    margin-top: 50px;
+}
+.content-page-center .ttcn-wrap-basic {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.content-page-center .ttcn-wrap-basic .ttcn-wrap-title {
+    background: #f5f5f5;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+}
+.ttcn-wrap-content {
+    padding:  10px;
+}
+.ttcn-wrap-content  .form-type-textfield {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+}
+.ttcn-wrap-content  .form-type-textfield label{
+    color: #000;
+    margin-right: 16px;
+}
+.ttcn-wrap-content  .form-type-textfield label span{
+    color: #c00017;
+}
+form.khach-hang-rut-tien-add-form .form-item input.form-text {
+    width: 180px;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    margin-right: 16px;
+}
+.ttcn-wrap-content  .form-type-textfield .description span{
+    color: #55a809;
+}
+.ttcn-wrap-basic {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    height: 184px;
+}
+.ttcn-wrap-content .tableheader-processed {
+    width: 100%;
+    margin: 0 0 10px;
+    background-color: #fff;
+    border-collapse: collapse;
+    border-color: #ddd;
+    border-width: 1px;
+    border-style: solid;
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+.ttcn-wrap-content .tableheader-processed thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.ttcn-wrap-content .tableheader-processed tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.ttcn-wrap-content .tableheader-processed tr th {
+    background: #0092d0;
+    color: white;
+}
+table.product-view-detail tr th {
+    font-weight: normal;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #E8EAE5;
+    color: #333;
+    text-indent: 10px;
+}
+.ttcn-wrap-content .tableheader-processed tr th {
+    border-bottom: 3px solid #ccc;
+    padding-right: 1em;
+    text-align: left;
+}
+td.empty.message {
+    color: red;
+    text-align: center;
+    font-size: 15px;
+}
+.ttcn-wrap-content .ctools-use-modal{
+    background-color: #da314b;
+    color: #fff;
+    padding: 10px;
+    float: right;
+}
+.uk-alert-danger {
+    display: inline-block;
+    width: 98%;
+    margin-top: 0px;
+    background: #fff1f0;
+    color: #d85030;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+form.khach-hang-rut-tien-add-form input.form-submit {
+    background: #55a809;
+    border: none;
+    padding: 7px;
+    min-width: 106px;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+@media screen and (max-width: 375px) {
+    
+}

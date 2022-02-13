@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin-page/admin :: html_header-admin }">
+
+<body>
+<div id="eq-loader">
+    <div class="eq-loader-div">
+        <div class="eq-loading dual-loader mx-auto mb-5"></div>
+    </div>
+</div>
+
+<!--  BEGIN NAVBAR  -->
+<header th:replace="~{admin-page/admin  :: my-header-admin}"></header>
+<!--  END NAVBAR  -->
+
+<!--  BEGIN MAIN CONTAINER  -->
+
+<div class="main-container" id="container">
+    <div class="overlay"></div>
+    <div class="ps-overlay"></div>
+    <div class="search-overlay"></div>
+
+
+    <!--  BEGIN MODERN  -->
+
+    <div th:replace="~{admin-page/admin  :: modern-admin}"></div>
+    <!--  END MODERN  -->
+
+    <!--  BEGIN CONTENT PART  -->
+    <div id="content" class="main-content">
+        <a th:href="@{/admin/order}" class="btn btn-primary btn-order"> Go back to Order list</a>
+        <div class="view-order" th:object="${order}">
+            <div class="summary-order">
+                <table>
+                    <tr>
+                        <th>Id Order</th>
+                        <td th:text="*{id}">02</td>
+                    </tr>
+                    <tr>
+                        <th>Tên Khách Hàng:</th>
+                        <td th:text="*{user.getName()}">Hoàng Xoan</td>
+                    </tr>
+                    <tr>
+                        <th>Số Điện Thoại:</th>
+                        <td th:text="*{phoneNumber}">0123456789</td>
+                    </tr>
+                    <tr>
+                        <th>Địa Chỉ:</th>
+                        <td th:text="*{address}">Nam Sách Hải Dương</td>
+                    </tr>
+                    <tr>
+                        <th>Tổng Tiền Hóa Đơn:</th>
+                        <td th:text="${format.formatPrice(order.totalPrice)}">127,000đ</td>
+                    </tr>
+                    <tr>
+                        <th >Ghi Chú:</th>
+                        <td th:text="*{note}">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <h5>Trạng Thái Đơn Hàng</h5>
+                        </th>
+                        <td>
+                            <h5 th:text="*{status}" color="red"></h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="button-status ">
+                <form th:action="@{'/admin/order/edit/'+${order.id}}" method="post" th:object="${order}">
+                <h5>Trạng thái đơn hàng</h5>
+                <button type="submit" class=" btn btn-success status mb-2 mt-2" name="status"
+                        id="processing" th:field="status" th:value="*{status.PROCESSING}"> PROCESSING</button>
+                <button type="submit" class=" btn btn-info status mb-2"
+                        id="approved" name="status" th:field="*{status}" th:value="*{status.APPROVED}"> APPROVED</button>
+                <button type="submit" class=" btn btn-secondary status mb-2"
+                        id="delivered" name="status" th:field="*{status}" th:value="*{status.DELIVERED}"> DELIVERED</button>
+                <button type="submit" class=" btn btn-danger status mb-2"
+                        id="canceled" name="status" th:field="*{status}" th:value="*{status.CANCELED}"> CANCELED</button>
+                </form>
+            </div>
+        </div>
+
+        <h3 class="h3-order">Chi tiết sản phẩm đơn hàng</h3>
+        <div class="widget-content widget-content-area view-order-detail">
+            <div class="table-responsive mb-4">
+                <table id="ecommerce-product-list" class="table  table-bordered">
+                    <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>Danh mục</th>
+                        <th>Giá bán</th>
+                        <th>Số lượng</th>
+
+                    </tr>
+                    </thead>
+                    <tbody th:each="od, state:${order.orderDetails}">
+                    <tr class="text-center">
+                        <td th:text="*{od.product.id}">15</td>
+                        <td class="text-center"><img class="product-list-img" th:src="@{'/image/ImageOrFarm/'+ *{od.product.image}}"></td>
+                        <td th:text="*{od.product.name}">Tao Xanh</td>
+                        <td th:text="*{od.product.category.name}">Hoa Qua Sach</td>
+                        <td th:text="*{format.formatPrice(od.product.salePrice)}">45000đ</td>
+                        <td th:text="*{od.quantity}">2</td>
+
+                    </tr>
+                    </tbody>
+<!--                    <tbody>-->
+<!--                    <tr class="text-center">-->
+<!--                        <td>15</td>-->
+<!--                        <td class="text-center"><img class="product-list-img" src="assets/img/90x90.jpg"></td>-->
+<!--                        <td>Tao Xanh</td>-->
+<!--                        <td>Hoa Qua Sach</td>-->
+<!--                        <td>45000đ</td>-->
+<!--                        <td>2</td>-->
+
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                    <tbody>-->
+<!--                    <tr class="text-center">-->
+<!--                        <td>15</td>-->
+<!--                        <td class="text-center"><img class="product-list-img" src="assets/img/90x90.jpg"></td>-->
+<!--                        <td>Tao Xanh</td>-->
+<!--                        <td>Hoa Qua Sach</td>-->
+<!--                        <td>45000đ</td>-->
+<!--                        <td>2</td>-->
+
+<!--                    </tr>-->
+<!--                    </tbody>-->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  END CONTENT PART  -->
+<!--  END MODERN  -->
+<footer th:replace="~{admin-page/admin  :: admin-footer}"></footer>
+<!--  END FOOTER  -->
+
+<!--  BEGIN PROFILE SIDEBAR  -->
+<aside th:replace="~{admin-page/admin  :: admin-profile}"></aside>
+
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+</body>
+<th:block th:insert="~{admin-page/admin  :: script}"></th:block>
+<script>
+    document.getElementById("processing").onclick = function () {
+        document.querySelector("#processing").style.backgroundColor = 'green';
+        document.querySelector("#canceled").style.backgroundColor = 'grey';
+        document.querySelector("#approved").style.backgroundColor = 'grey';
+        document.querySelector("#delivered").style.backgroundColor = 'grey';
+    }
+    document.getElementById("canceled").onclick = function () {
+        document.querySelector("#canceled").style.backgroundColor = 'green';
+        document.querySelector("#processing").style.backgroundColor = 'grey';
+        document.querySelector("#approved").style.backgroundColor = 'grey';
+        document.querySelector("#delivered").style.backgroundColor = 'grey';
+    }
+    document.getElementById("approved").onclick = function () {
+        document.querySelector("#approved").style.backgroundColor = 'green';
+        document.querySelector("#canceled").style.backgroundColor = 'grey';
+        document.querySelector("#processing").style.backgroundColor = 'grey';
+        document.querySelector("#delivered").style.backgroundColor = 'grey';
+    }
+    document.getElementById("delivered").onclick = function () {
+        document.querySelector("#delivered").style.backgroundColor = 'green';
+        document.querySelector("#canceled").style.backgroundColor = 'grey';
+        document.querySelector("#approved").style.backgroundColor = 'grey';
+        document.querySelector("#processing").style.backgroundColor = 'grey';
+    }
+
+</script>
+</html>

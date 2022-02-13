@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+
+<body>
+<header th:replace="header :: my-header"></header>
+
+<section class="breadcrum">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb container">
+              <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
+              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            </ol>
+          </nav>
+    </section>
+    <main>
+        <section class="shop-details-area pt-100 pb-100">
+            <div class="container">
+                <div class="row" th:object="${productDetail}">
+                    <div class="col-lg-6">
+                        <div class="shop-details-thumb">
+                            <div class="shop-details-thumb-slider-active">
+                                <div class="item ">
+                                    <img th:src="@{'/image/ImageOrFarm/'+ ${productDetail.getImage}}" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="shop-small-slider-active mt-10">
+                            <div class="item">
+                                <img th:src="@{assets/images/shop-details-small-1.jpg}" alt="">
+                            </div>
+                            <div class="item">
+                                <img th:src="@{assets/images/shop-details-small-2.jpg}" alt="">
+                            </div>
+                            <div class="item">
+                                <img th:src="@{assets/images/shop-details-small-3.jpg}" alt="">
+                            </div>
+                            <div class="item">
+                                <img th:src="@{assets/images/shop-details-small-4.jpg}" alt="">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="shop-product-details-content pl-70 mt-35">
+                            <span>Trong kho</span>
+                            <h2 class="title" th:utext="*{name}"></h2>
+                            <input type="hidden" id="productId" value="1">
+                            <div class="pricing">
+                                <th:block th:if="${productDetail.percentDiscount!=0}">
+                                    <div class="discount-price">
+                                        <th:block th:with="discountPrice=${(productDetail.salePrice * (100 - productDetail.percentDiscount))/100}">
+                                            <span th:text="${format.formatPrice(discountPrice)}"></span><sup>đ</sup>
+                                        </th:block>
+                                    </div>
+                                    <div class="regular-price">
+                                        <del th:text="${format.formatPrice(productDetail.salePrice)}+'đ'"></del>
+                                    </div>
+                                </th:block>
+                                <th:block th:unless="${productDetail.percentDiscount!=0}">
+                                    <div class="discount-price">
+                                        <span th:text="${format.formatPrice(productDetail.salePrice)}"></span><sup>đ</sup>
+                                    </div>
+                                </th:block>
+                            </div>
+                            <div class="review">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star-half-alt"></i></li>
+                                </ul>
+                                <span>(4 bình luận)</span>
+                            </div>
+                            <h5 th:utext = "*{briefDesc}"></h5>
+                            <p th:utext="*{description}"></p>
+                            <form th:action="@{'/product/' + ${productDetail.id}}" method="post">
+                                <div class="shop-buttons d-block d-sm-flex align-items-center">
+                                    <div class="product-quantity" id="quantity">
+                                        <button type="button" id="sub" class="sub">-</button>
+                                        <input type="text" id="1" value="1" th:name="quantity"/>
+                                        <button type="button" id="add" class="add">+</button>
+                                    </div>
+                                    <button class="main-btn ml-10" type="submit">Thêm vào giỏ</button>
+                                </div>
+                            </form>
+                            <div class="details-info">
+                                <ul>
+                                    <li><span>SKU:</span> 42725-AB-6 </li>
+                                    <li><span >Phân loại: </span><th:block th:utext = " ${productDetail.getCategory.getName}"></th:block></li>
+                                    <li><span>Tags:</span> Cải Bắp, Sạch, Rau </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!--====== orfarm SHOP DETAILS PART ENDS ======-->
+        <!--====== SHOPPING CART PART START ======-->
+        <div th:replace="index :: my-cart"></div>
+    
+        <!--====== orfarm SHOP DETAILS PART ENDS ======-->
+
+    
+        <div class="shop-details-info-area pt-85 pb-100 ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="shop-details-box">
+                            <ul class="nav nav-pills mb-35" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Mô tả</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Đánh giá (2)</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="shop-description">
+                                    <p th:object="${productDetail}" th:text="*{description}"></p>
+                                    <h4 class="title">Đóng gói và vận chuyển.</h4>
+                                    <p>Chiều cao cây khoảng 80cm, mỗi cây sẽ có từ 150 - 180 bắp. Bắp cải tí hon rất nhiều chất xơ, tốt cho sức khỏe.</p>
+                                    <p>Chiều cao cây khoảng 80cm, mỗi cây sẽ có từ 150 - 180 bắp. Bắp cải tí hon rất nhiều chất xơ, tốt cho sức khỏe.</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="review-rating-box">
+                                    <div class="top-rating-result">
+                                        <h3 class="title">2 Reviews for Watch</h3>
+                                        <div class="rating-result-box">
+                                            <div class="thumb">
+                                                <img src="assets/images/testimonial-user-2.png" alt="">
+                                            </div>
+                                            <div class="content">
+                                                <ul>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star-half-alt"></i></li>
+                                                </ul>
+                                                <div class="shop-meta">
+                                                    <div class="author-user-name">
+                                                        <a href="#">Lê Ngọc Hà</a>
+                                                    </div>
+                                                    <div class="date">
+                                                        <span>08, 10, 2021</span>
+                                                    </div>
+                                                </div>
+                                                <p>Chiều cao cây khoảng 80cm, mỗi cây sẽ có từ 150 - 180 bắp. Bắp cải tí hon rất nhiều chất xơ, tốt cho sức khỏe.</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating-result-box">
+                                            <div class="thumb">
+                                                <img src="assets/images/testimonial-user-1.png" alt="">
+                                            </div>
+                                            <div class="content">
+                                                <ul>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star-half-alt"></i></li>
+                                                </ul>
+                                                <div class="shop-meta">
+                                                    <div class="author-user-name">
+                                                        <a href="#">Xoan Hoàng</a>
+                                                    </div>
+                                                    <div class="date">
+                                                        <span>24, 07, 2021</span>
+                                                    </div>
+                                                </div>
+                                                <p>Chiều cao cây khoảng 80cm, mỗi cây sẽ có từ 150 - 180 bắp. Bắp cải tí hon rất nhiều chất xơ, tốt cho sức khỏe.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-box">
+                                        <div class="review-title">
+                                            <h4 class="title">Thêm đánh giá</h4>
+                                            <p>Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu *</p>
+                                        </div>
+                                        <div class="add-review-star">
+                                            <span>Đánh giá sản phẩm này:</span>
+                                            <ul>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fal fa-star"></i></li>
+                                                <li><i class="fal fa-star"></i></li>
+                                                <li><i class="fal fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="rating-form-box">
+                                        <form action="#">
+                                            <div class="input-box">
+                                                <label for="#">Tên của bạn *</label>
+                                                <input type="text" placeholder="Username">
+                                            </div>
+                                            <div class="input-box">
+                                                <label for="#">Email *</label>
+                                                <input type="email" placeholder="E-mail address">
+                                            </div>
+                                            <div class="input-box">
+                                                <label for="#">Đánh giá của bạn </label>
+                                                <textarea name="#" id="#" cols="30" rows="10" placeholder="Type you message"></textarea>
+                                            </div>
+                                            <div class="input-box">
+                                                <div class="condition-check pb-15">
+                                                    <input id="terms-conditions" type="checkbox">
+                                                    <label for="terms-conditions">Lưu tên, email và trang web của tôi trong trình duyệt này cho lần sau khi tôi nhận xét</label>
+                                                </div>
+                                                <button class="main-btn" type="submit">Gửi đánh giá</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                      
+    
+        <!--====== orfarm SHOP DETAILS PART ENDS ======-->
+    
+    
+        <!--====== orfarm SHOP RELATED PRODUCT PART ENDS ======-->
+    
+        <div class="shop-related-area pt-90 pb-170">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="orfarm-section-title text-center">
+                            <h3 class="orfarm-title">Các sản phẩm liên quan</h3>
+                            <p>Khám phá thêm nhiều sản phẩm bên dưới để đưa ra lựa chọn tốt nhất cho bạn và gia đình. </p><i class="fas fa-heart"></i><i class="fas fa-heart"></i><i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row shop-related-product-slider-active">
+                    <div class="col-lg-3 col-md-6" th:each="similar, state:${listSimilar}">
+                        <div class="single-shop-box">
+                            <div class="thumb text-center">
+                                <img th:src="@{'/image/ImageOrFarm/'+${similar.image}}" alt="">
+                                <div class="reborn">
+                                    <span th:if="${similar.percentDiscount}!= 0">Sale</span>
+                                </div>
+                                <div class="cart-list-icon">
+                                    <ul>
+                                        <li><a th:href="@{#}"><i class="fal fa-shopping-bag"></i></a></li>
+                                        <li><a th:href="@{#}"><i class="fal fa-heart"></i></a></li>
+                                        <li><a th:href="@{'/product/'+${similar.id}}"><i class="fal fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star-half-alt"></i></li>
+                                </ul>
+                                <a th:href="@{'/product/'+${similar.id}}" th:text="${similar.name}"></a>
+                                <div class="pricing">
+                                    <th:block th:if="${similar.percentDiscount!=0}">
+                                        <div class="discount-price">
+                                            <th:block th:with="discountPrice=${(similar.salePrice * (100 - similar.percentDiscount))/100}">
+                                                <span th:text="${format.formatPrice(discountPrice)}"></span><sup>đ</sup>
+                                            </th:block>
+                                        </div>
+                                        <div class="regular-price">
+                                            <span th:text="${format.formatPrice(similar.salePrice)}+'đ'"></span>
+                                        </div>
+                                    </th:block>
+                                    <th:block th:unless="${similar.percentDiscount!=0}">
+                                        <div class="discount-price">
+                                            <span th:text="${format.formatPrice(similar.salePrice)}"></span><sup>đ</sup>
+                                        </div>
+                                    </th:block>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<th:block th:insert="~{header :: script}"></th:block>
+</html> 

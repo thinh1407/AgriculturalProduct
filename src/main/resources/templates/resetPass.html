@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+<body>
+
+<header th:replace="header :: my-header"></header>
+
+<div th:replace="index :: my-cart"></div>
+    <!--====== SHOPPING CART PART ENDS ======-->
+
+<section class="breadcrum" >
+    
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb container">
+          <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Account</li>
+        </ol>
+      </nav>
+</section>
+
+<main role="main">
+    <section class="resetPass">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="acc-reset" id="customerResetPass">
+                        <div class="reset-title">
+                            <h2>Reset your password</h2>
+                            <p>Chúng tôi sẽ gửi mật khẩu mới đến email của bạn.</p>
+                        </div>
+                        <div class="login-reset">
+                        <ul class="fill-form">
+                            <li class="log-resetEmail input-group ">
+                                            
+                                <label for="exampleInputEmail">Email</label>
+                                <br>
+                                <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
+                             
+                        </li>
+                   
+                   
+                        <li class="form-btn" >
+                            <div class="form-action-btn">
+                            <!-- <div class="form-action-btn"> -->
+                                <button style="margin-top: 30px; margin-bottom: 15px;" id="submit" type="button" class="btn btn-warning">Submit</button>
+                                <br>
+                                <a href="./login.html" id="HideRecoverPasswordLink">Cancel</a>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</main>
+<footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<th:block th:insert="~{header :: script}"></th:block>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+<body>
+    <header th:replace="header :: my-header"></header>
+
+    <section class="breadcrum">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb container">
+                <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Xem giỏ hàng</li>
+            </ol>
+        </nav>
+    </section>
+    <!--====== SHOPPING CART PART START ======-->
+
+    <div th:replace="index :: my-cart"></div>
+    <!--====== SHOPPING CART PART ENDS ======-->
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 mt-70 mb-50">
+                    <div class="common-view-cart pt-4 pb-4">
+                        <p class="text-cart  mb-0 ">Giỏ hàng</p>
+                    </div>
+                    <form method="post" th:action="@{/cart/save}" th:object="${listQuantity}">
+                        <div class="displayProduct row pt-3 pb-3">
+                        <ul id="mainCart">
+                            <div th:each="cartItem : ${listProductInCart}">
+                                <li>
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td><div class="img-product ">
+                                                <img th:src="@{'/image/ImageOrFarm/'+${cartItem.image}}" alt="">
+                                            </div>
+                                            </td>
+                                            <td>
+                                                <div class="infor-product pl-3">
+                                                    <input type="hidden" value="1" id="` + cartMain[i].productId + `">
+                                                    <a th:href="@{'/product/' + ${cartItem.productId}}">
+                                                        <h3 th:text="${cartItem.productName}"></h3>
+                                                    </a>
+                                                    <p><strong>Kích thước:</strong> <span>1</span>kg</p>
+                                                    <div class="discount-price"><span th:text="${format.formatPrice(cartItem.salePrice)}"></span><sup>đ</sup></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="buttons_added" >
+                                                    <input class="inputQuantity"
+                                                           name="soluong"
+                                                           id="soluong"
+                                                           min='1' type='number'
+                                                            th:value="${cartItem.quantity}"
+                                                    />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{'/cart/' + ${cartItem.productId}}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                    <div class="icon-delete" id="1">
+                                                        <i class="icon-delete1 fas fa-trash-alt">
+                                                        </i>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="sumPro">
+                                                    <span th:text="${format.formatPrice(cartItem.totalPrice)}"></span><sup>đ</sup>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </div>
+                        </ul>
+                        <div class="cart-link  pt-3 pb-3 " style="width: 835px;">
+                            <a th:href="@{/category/1/1}">Tiếp tục mua hàng</a>
+                            <a th:href="@{/cart/delete}" style="padding-left: 25%">Xoá tất cả</a>
+                            <button type="submit" class="btn btn-warning" style="margin-left: 31%">Lưu lại giỏ hàng</button>
+
+                        </div>
+
+                    </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 box-fee mt-70 mb-50 pt-3">
+                    <div class="immidiate-fee ">
+                        Tạm tính: <span class="prices" th:text="${tempPrice}"></span> <sup>đ</sup>
+                    </div>
+
+                    <div class="shipping-fee pt-4">
+                        <p>Phí ship: <span class="prices" th:text="${ship}"></span> <sup>đ</sup></p>
+                       
+                        
+                            <p class="pt-2" ><Strong style="color: brown;">Ưu đãi từ cửa hàng:</Strong> OrFarm hỗ trợ
+                                khách hàng miễn phí vận chuyển với những đơn hàng có giá trị từ 50.000đ trở lên.
+                            </p>
+                        </div>
+                        <div class="immidiate-fee sum-fee" style="color: rgb(49, 189, 21);">
+                            Tổng tiền: <span class="prices" th:text="${totalPrice}"></span> <sup>đ</sup>
+                        </div>
+                        <div class="payment">
+                            <form th:action="@{/payment}" method="get">
+                            <button type="submit" class="btn btn-warning pt-50 pl-50">Tiến hành thanh toán</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <th:block th:insert="~{header :: script}"></th:block>
+<!--====== Main js ======-->
+<!-- <script src="assets/js/main.js"></script> -->
+<script type="text/javascript">
+    $(window).load(function () {
+        showProduct();
+        immidiateSum();
+        
+    }); 
+
+
+ </script>
+</html>

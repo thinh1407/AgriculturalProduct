@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{header :: html_header}">
+
+<body>
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 col-sm-12 pt-5 payment-right">
+                <div class="name-store" style="color: #333333;">
+                    <h4> OrFarm Store</h4>
+                </div>
+                <div>
+                    <form th:action="@{/payment/process}" th:object="${paymentInformation}" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Thông tin liên hệ</label>
+                            <label required type="email" class="form-control" id="exampleInputEmail"
+                                   th:text="${userInformation.email}" th:field="${userInformation.email}"
+                                   th:value="${userInformation.email}" th:utext="${userInformation.email}"></label>
+                            <div class="form-group firstName_custormer pt-3">
+                                <label required type="text" class="form-control" id="exampleInputFirstName" width="50%"
+                                       th:field="${userInformation.firstName}" th:value="${userInformation.firstName}"
+                                       th:utext="${userInformation.firstName}"></label>
+                            </div>
+                            <div class="form-group lastName_custormer pt-3">
+                                <label required type="text" class="form-control" id="exampleInputLastName" width="50%"
+                                       th:field="${userInformation.lastName}" th:value="${userInformation.lastName}"
+                                       th:utext="${userInformation.lastName}"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPhone">Số điện thoại </label>
+                            <input required type="number" maxlength="10" class="form-control" id="exampleInputPhone"
+                                   placeholder="Số điện thoại" th:field="*{order.phoneNumber}" >
+                        </div>
+                        <label>Địa chỉ đặt hàng</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect01" th:field="*{order.address}">
+                                <!-- <option value="Chọn Tỉnh/Thành">Chọn Tỉnh/Thành</option> -->
+                                <option value="An Giang">An Giang</option>
+                                <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                <option value="Bắc Giang">Bắc Giang</option>
+                                <option value="Bắc Kạn">Bắc Kạn</option>
+                                <option value="Bạc Liêu">Bạc Liêu</option>
+                                <option value="Bắc Ninh">Bắc Ninh</option>
+                                <option value="Bến Tre">Bến Tre</option>
+                                <option value="Bình Định">Bình Định</option>
+                                <option value="Bình Dương">Bình Dương</option>
+                                <option value="Bình Phước">Bình Phước</option>
+                                <option value="Bình Thuận">Bình Thuận</option>
+                                <option value="Bình Thuận">Bình Thuận</option>
+                                <option value="Cà Mau">Cà Mau</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Đắk Lắk">Đắk Lắk</option>
+                                <option value="Đắk Nông">Đắk Nông</option>
+                                <option value="Điện Biên">Điện Biên</option>
+                                <option value="Đồng Nai">Đồng Nai</option>
+                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Hà Giang">Hà Giang</option>
+                                <option value="Hà Nam">Hà Nam</option>
+                                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                <option value="Hải Dương">Hải Dương</option>
+                                <option value="Hậu Giang">Hậu Giang</option>
+                                <option value="Hòa Bình">Hòa Bình</option>
+                                <option value="Hưng Yên">Hưng Yên</option>
+                                <option value="Khánh Hòa">Khánh Hòa</option>
+                                <option value="Kiên Giang">Kiên Giang</option>
+                                <option value="Kon Tum">Kon Tum</option>
+                                <option value="Lai Châu">Lai Châu</option>
+                                <option value="Lâm Đồng">Lâm Đồng</option>
+                                <option value="Lạng Sơn">Lạng Sơn</option>
+                                <option value="Lào Cai">Lào Cai</option>
+                                <option value="Long An">Long An</option>
+                                <option value="Nam Định">Nam Định</option>
+                                <option value="Nghệ An">Nghệ An</option>
+                                <option value="Ninh Bình">Ninh Bình</option>
+                                <option value="Ninh Thuận">Ninh Thuận</option>
+                                <option value="Phú Thọ">Phú Thọ</option>
+                                <option value="Quảng Bình">Quảng Bình</option>
+                                <option value="Quảng Bình">Quảng Bình</option>
+                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                <option value="Quảng Ninh">Quảng Ninh</option>
+                                <option value="Quảng Trị">Quảng Trị</option>
+                                <option value="Sóc Trăng">Sóc Trăng</option>
+                                <option value="Sơn La">Sơn La</option>
+                                <option value="Tây Ninh">Tây Ninh</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                                <option value="Thái Nguyên">Thái Nguyên</option>
+                                <option value="Thanh Hóa">Thanh Hóa</option>
+                                <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                <option value="Tiền Giang">Tiền Giang</option>
+                                <option value="Trà Vinh">Trà Vinh</option>
+                                <option value="Tuyên Quang">Tuyên Quang</option>
+                                <option value="Vĩnh Long">Vĩnh Long</option>
+                                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                <option value="Yên Bái">Yên Bái</option>
+                                <option value="Phú Yên">Phú Yên</option>
+                                <option value="Tp.Cần Thơ">Tp.Cần Thơ</option>
+                                <option value="Tp.Đà Nẵng">Tp.Đà Nẵng</option>
+                                <option value="Tp.Hải Phòng">Tp.Hải Phòng</option>
+                                <option value="Tp.Hà Nội">Tp.Hà Nội</option>
+                                <option value="TP  HCM">TP HCM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input required type="text" class="form-control"
+                                   id="exampleInputAddress" placeholder="Địa chỉ" th:field="*{order.address}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" >Ghi chú:</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" th:field="*{order.note}"></textarea>
+                        </div>
+                        <div class="success-order row pb-5 ">
+                            <button id="btn-order" type="submit" class="btn-buy btn btn-success mt-2 ml-3">Đặt hàng
+                            </button>
+                            <a th:href="@{/cart}" class="back">Quay lại</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="right">
+                    <p>Mọi sự riêng tư và thông tin của bạn đều được chúng tôi bảo mật.</p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-sm-12 payment-left">
+                <div class="payment-left-display pr-80">
+                    <div class="showProduct">
+                        <ul id="mainCartPayment">
+                            <th:block th:each="cartItem : ${productInCart}">
+                                <li>
+                                    <div class="cover-product-pay row pb-3">
+                                        <div class="img-product-payment pl-5 col-4 ">
+                                            <img th:src="@{'/image/ImageOrFarm/'+${cartItem.image}}" width="50px"
+                                                 height="50px" alt="">
+                                            <span class="quantityPayment " th:text="${cartItem.quantity}"></span>
+                                        </div>
+                                        <div class="infor-product col-4 ">
+                                            <a th:href="@{'product/' + ${cartItem.productId}}">
+                                                <h5 th:text="${cartItem.productName}" style="font-size: 14px;"></h5>
+                                                <span>1kg</span>
+                                            </a>
+                                        </div>
+                                        <div class="price-product-pay pl-3 col-4 pt-25">
+                                            <span class="discount-price-pay"
+                                                  th:text="${format.formatPrice(cartItem.salePrice)}"></span><sup>đ</sup>
+                                        </div>
+                                    </div>
+                                </li>
+                            </th:block>
+
+
+                        </ul>
+                    </div>
+                    <div class="applyDiscount">
+                        <div class="input-group mb-3 ml-4" style="width: 380px;">
+                            <input id="promo-code" type="text" class="form-control" placeholder="Mã giảm giá"
+                                   height="80px"
+                                   aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                            <button class="btn btn-success" type="button">Sử dụng</button>
+
+                        </div>
+                    </div>
+                    <div class="sumPriceproduct">
+                        <p>Tạm tính: <span class="prices" th:text="${tempPrice}"></span> <sup>đ</sup></p>
+                        <p>Phí ship: <span class="prices" th:text="${ship}"></span> <sup>đ</sup></p>
+                        <p class="hidden-price">Giảm giá: <span class="padding-price3"></span> <sup>đ</sup></p>
+
+                    </div>
+                    <div class="sumarizePrice ">
+                        <p>Tổng tiền: <span class="padding-price" th:text="${totalPrice}"></span> <sup>đ</sup></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+<!--====== jquery js ======-->
+<th:block th:insert="~{header :: script}"></th:block>
+<script type="text/javascript">
+    $(window).load(function () {
+        showProductToPayment();
+        checkProduct();
+    });
+</script>
+
+</html>

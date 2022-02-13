@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace = "~{header :: html_header}">
+
+<body>
+
+<header th:replace="header :: my-header"></header>
+
+<section class="breadcrum">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb container">
+                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+            </ol>
+        </nav>
+    </section>
+        <div class="section-ptb customer-page register-page" style="padding-bottom: 80px;">
+            <div class="container">
+                <div class="row log-acc-page register-acc-page pt-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="acc-page">
+                            <div class="login">
+                                <div th:if="${param.error != null}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Incorrect email or password.
+                                </div>
+                                <form th:action="@{/authen}" method="post">
+                                    <div class="login-form-container">
+                                        <div class="title-text ">
+                                            <h2>Đăng nhập</h2>
+                                            <p>Vui lòng điền thông tin vào bên dưới!!!</p>
+                                        </div>
+
+                                        <div class="form-group fill-form log-email">
+                                            <label for="exampleInputPassword1">Email</label>
+                                            <input type="email" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Email" name="email"/>
+                                        </div>
+                                        <div class="form-group fill-form log-lastName">
+                                            <label for="exampleInputPassword2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2"
+                                                placeholder="Password" name="password"/>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-warning form-control">Đăng
+                                            nhập</button>
+                                        <div class="pt-3">
+                                            <a href="./resetPass.html" style="color: #f5ab1e;  " id="recoverPass">Quên
+                                                mật khẩu?</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="acc-page-2">
+                            <div class="side-form">
+                                <div class="acc-title">
+                                    <h6>Bạn chưa có tài khoản? </h6>
+                                    <div class="account-option-action">
+                                        <a th:href="@{/createAccount}" id="customer_register">
+                                            Tạo tài khoản
+                                            <!-- <button type="button" class="btn btn-outline-warning"></button> -->
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="term-privacy">
+                                    <p class="term-con">
+                                        <span>
+                                            <sup>*</sup>
+                                        </span>
+                                        <a href="" target="_blank"> Điều khoản và điều kiện</a>
+                                    </p>
+                                    <p class="pri-pol ">
+
+                                        <span> Sự riêng tư và bảo mật của bạn không quan trọng đối với chúng tôi. Để
+                                            biết thêm thông tin về cách chúng tôi sử dụng dữ liệu của bạn, hãy đọc
+                                            điều khoản dưới đây.
+                                        </span>
+                                        <br>
+                                        <a href="" target="_blank" style="margin: 5px"> Chính sách điều khoản</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <section class="pt-2 mb-3">
+        <div class="container">
+            <div class="ftlink-li footer-newsletter">
+                <div class="news-letter">
+                    <div class="title">
+
+                        <h2 class="ft-title">Cơ Hội Săn Mã Giảm Giá Cuối Cùng !!!</h2>
+
+
+                        <p class="pb-2">NHẬN NGAY GIẢM GIÁ 20% CHO LẦN MUA HÀNG ĐẦU TIÊN TẠI SHOP!!</p>
+
+                    </div>
+                    <div class="subscribe-content">
+                        <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form-coupon"><input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓">
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <div class="subscribe-block ">
+                                <input type="email" name="contact[email]" class="email form-control mail text-medium" id="E-mail" value="" placeholder="Enter Your Email Address" autocapitalize="off">
+                                <button type="submit" class="btn-style1" name="commit" id="Subscribe"><a href="./createAccount.html" style="text-decoration: none; color: #fff;">Đăng Ký</a></button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer th:replace = "~{footer :: html_footer}"> </footer>
+</body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <th:block th:insert="~{header :: script}"></th:block>
+</html>
